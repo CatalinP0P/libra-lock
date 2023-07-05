@@ -1,13 +1,11 @@
-import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import React from 'react';
 
 function App() {
-  return (
-    <div>
-      <label>Homepage</label>
-    </div>
-  );
+    return (
+        <div>
+            <label>Homepage</label>
+        </div>
+    );
 }
 
 export default App;
