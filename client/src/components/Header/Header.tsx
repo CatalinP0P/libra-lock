@@ -9,7 +9,7 @@ export default function Header() {
 
     return (
         <div className="border-b border-secondary/10">
-            <Container className="w-full flex flex-row py- justify-between py-2 items-center">
+            <Container className="flex flex-row py- justify-between py-2 items-center">
                 <Logo />
                 <Slider
                     checked={theme == 'dark' ? true : false}
