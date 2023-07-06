@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Layout from './Layout';
 import { ThemeProvider } from './context/ThemeContext';
+import Home from './pages/Home';
 
 function App() {
     return (
@@ -9,7 +10,7 @@ function App() {
             <Layout>
                 <BrowserRouter>
                     <Routes>
-                        <Route path="/" element={<label>Home</label>} />
+                        <Route path="/" element={<Home />} />
                         <Route
                             path="/signin"
                             element={<label>Sign in page</label>}
