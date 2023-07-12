@@ -3,6 +3,9 @@ import Logo from './Logo';
 import Container from '../ui/Container';
 import { useTheme } from '../../context/ThemeContext';
 import Slider from '../ui/Slider';
+import { ReactComponent as MoonSecondary } from '../../assets/svgs/MoonSecondary.svg';
+import { ReactComponent as SunSecondary } from '../../assets/svgs/SunSecondary.svg';
+import { ReactComponent as SunWhite } from '../../assets/svgs/SunWhite.svg';
 
 export default function Header() {
     const { toggleTheme, theme } = useTheme();
@@ -16,6 +19,8 @@ export default function Header() {
                     onChange={() => {
                         toggleTheme();
                     }}
+                    SvgOFF={SunWhite}
+                    SvgON={MoonSecondary}
                 />
             </Container>
         </div>
