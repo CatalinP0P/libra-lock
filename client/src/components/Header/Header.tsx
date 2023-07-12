@@ -11,7 +11,7 @@ export default function Header() {
     const { toggleTheme, theme } = useTheme();
 
     return (
-        <div className="border-b border-secondary/10">
+        <div className="border-b-2 border-secondary/10">
             <Container className="flex flex-row py- justify-between py-2 items-center">
                 <Logo />
                 <Slider

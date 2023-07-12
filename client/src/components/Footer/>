@@ -12,12 +12,11 @@ export default function Footer() {
                     © All Rights Reserved
                 </label>
                 <div className="flex flex-row gap-8 items-center cursor-pointer">
-                    <a href="https://facebook.com">
-                        <FacebookSVG height={20} />
+                    <a href="https://www.w3schools.com">
+                        {/* <FacebookSVG height={20} /> */}
+                        instagram
                     </a>
-                    <a href="https://instagram.com">
-                        <InstagramSVG height={24} />
-                    </a>
+                    <InstagramSVG height={24} />
                 </div>
             </Container>
         </div>
