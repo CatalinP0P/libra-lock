@@ -12,8 +12,8 @@ export default function Footer() {
         <div className="border-t-2 py-4 border-secondary/10">
             <Container className="flex flex-row justify-between">
                 <label className=" font-thin">© All Rights Reserved</label>
-                <div className="flex flex-row gap-8 items-center cursor-pointer">
-                    <a href="https://facebook.com">
+                <div className="flex flex-row gap-8 items-center">
+                    <a href="https://facebook.com" className="cursor-pointer">
                         <FacebookSVG
                             height={20}
                             className="transition-all"
@@ -22,7 +22,7 @@ export default function Footer() {
                             }
                         />
                     </a>
-                    <a href="https://instagram.com">
+                    <a href="https://instagram.com" className="cursor-pointer">
                         <InstagramSVG
                             className="transition-all"
                             height={28}
