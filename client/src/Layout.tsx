@@ -6,7 +6,6 @@ import Footer from './components/Footer/Footer';
 export default function Layout({ children }: { children: React.ReactNode }) {
     useEffect(() => {
         const mode = localStorage.theme;
-        console.log(mode);
 
         if (mode == 'dark') document.documentElement.classList.add('dark');
         else document.documentElement.classList.remove('dark');

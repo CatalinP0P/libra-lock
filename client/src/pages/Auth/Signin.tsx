@@ -13,9 +13,12 @@ import Button from '../../components/ui/Button';
 
 import SignDark from '../../assets/backgrounds/SignDark.png';
 import SignLight from '../../assets/backgrounds/SignLight.png';
+import { useActionData } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
 
 export default function SignIn() {
     const { theme } = useTheme();
+
     return (
         <div
             className={
