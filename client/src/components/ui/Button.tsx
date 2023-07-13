@@ -15,7 +15,7 @@ export default function Button({
     rounded?: boolean;
 }) {
     const { theme } = useTheme();
-    var style = `px-8 transition-all hover:scale-[102%] text-xl py-2 ${
+    var style = `transition-all hover:scale-[102%] text-xl p-2 ${
         variant == 'primary' ? 'text-white' : 'text-primary'
     } ${rounded ? 'rounded-full' : ''} ${
         variant == 'primary'
