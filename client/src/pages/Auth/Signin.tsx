@@ -16,7 +16,7 @@ export default function SignIn() {
     return (
         <div
             className={
-                'flex flex-row w-full h-screen overfloxw-hidden ' +
+                'flex flex-row w-[%] h-screen overflow-hidden ' +
                 (theme == 'dark'
                     ? 'bg-darkMode text-white'
                     : 'bg-white text-black')
@@ -28,7 +28,7 @@ export default function SignIn() {
             </div>
             <div className="relative w-full h-full">
                 <div className="absolute w-fit h-fit left-[50%] top-[50%] flex flex-col translate-x-[-50%] translate-y-[-50%] p-8 gap-4 items-center">
-                    <label className="font-extrabold text-6xl whitespace-nowrap">
+                    <label className="font-extrabold text-3xl sm:text-4xl md:text-6xl whitespace-nowrap">
                         Login to Your Account
                     </label>
                     <label className="text-2xl font-light">
@@ -56,12 +56,16 @@ export default function SignIn() {
                 }
             >
                 <div className="absolute left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] flex flex-col gap-8 items-center">
-                    <label className="font-extrabold text-6xl">New Here?</label>
-                    <p className="font-light text-2xl text-center min-w-[400px]">
+                    <label className="font-extrabold text-4xl md:text-6xl">
+                        New Here?
+                    </label>
+                    <p className="font-light text-lg sm:text-2xl text-center min-w-[400px]">
                         You can sign up and discover great amount of new
                         opportunities
                     </p>
-                    <Button className="px-16" variant='secondary' >Sign up</Button>
+                    <Button className="px-16" variant="secondary">
+                        Sign up
+                    </Button>
                 </div>
             </div>
         </div>

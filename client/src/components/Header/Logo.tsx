@@ -8,7 +8,7 @@ export default function Logo({ className }: { className?: string }) {
     return (
         <img
             src={theme == 'dark' ? logoDark : logoWhite}
-            className={'h-[64px] ' + className}
+            className={'h-[40px] md:h-[64px] ' + className}
         />
     );
 }

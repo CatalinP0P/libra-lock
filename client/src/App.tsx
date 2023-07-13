@@ -4,7 +4,7 @@ import Layout from './Layout';
 import { ThemeProvider } from './context/ThemeContext';
 import Home from './pages/Home/Home';
 import SignIn from './pages/Auth/Signin';
-import "./index.css"
+import './index.css';
 
 function App() {
     return (
