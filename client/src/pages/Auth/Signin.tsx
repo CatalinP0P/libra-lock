@@ -11,8 +11,14 @@ import HorizontalSeparator from '../../components/ui/HorizontalSeparator';
 import FormInput from '../../components/ui/forms/FormInput';
 import Button from '../../components/ui/Button';
 
+import SignDark from '../../assets/backgrounds/SignDark.png';
+import SignLight from '../../assets/backgrounds/SignLight.png';
+import { useActionData } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
+
 export default function SignIn() {
     const { theme } = useTheme();
+
     return (
         <div
             className={
@@ -55,7 +61,22 @@ export default function SignIn() {
                     (theme == 'dark' ? 'bg-secondary/10' : 'bg-secondary/10')
                 }
             >
-                <div className="absolute left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] flex flex-col gap-8 items-center">
+                <img
+                    src={SignDark}
+                    className={
+                        'absolute z-[1] left-0 transition-all top-[2px] object-cover w-full h-full ' +
+                        (theme == 'light' ? ' opacity-0' : ' opacity-100')
+                    }
+                />
+                <img
+                    src={SignLight}
+                    className={
+                        'absolute z-[1] left-0 transition-all top-[2px] object-cover w-full h-full ' +
+                        (theme == 'dark' ? ' opacity-0' : ' opacity-100')
+                    }
+                />
+
+                <div className="absolute left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] flex flex-col gap-8 items-center z-[2]">
                     <label className="font-extrabold text-4xl md:text-6xl">
                         New Here?
                     </label>

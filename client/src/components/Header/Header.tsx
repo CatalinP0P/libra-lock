@@ -1,21 +1,29 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Logo from './Logo';
 import Container from '../ui/Container';
 import { useTheme } from '../../context/ThemeContext';
-import Slider from '../ui/Slider';
-import { ReactComponent as MoonSecondary } from '../../assets/svgs/MoonSecondary.svg';
-import { ReactComponent as SunSecondary } from '../../assets/svgs/SunSecondary.svg';
-import { ReactComponent as SunWhite } from '../../assets/svgs/SunWhite.svg';
+
 import ThemeSlider from '../ui/ThemeSlider';
+import { useAuth } from '../../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
+import { usePopup } from '../../context/PopupContext';
+import AccountButton from './AccountButton';
 
 export default function Header() {
     const { toggleTheme, theme } = useTheme();
+    const { loading, user } = useAuth();
+    const { signOut } = useAuth();
+    const { accountDropdown, setAccountDropdown } = usePopup();
+    const navigate = useNavigate();
 
     return (
         <div className="border-b-2 border-secondary/10">
             <Container className="flex flex-row py- justify-between py-2 items-center">
                 <Logo />
-                <ThemeSlider/>
+                <div className="flex flex-row gap-4 items-center">
+                    <AccountButton />
+                    <ThemeSlider />
+                </div>
             </Container>
         </div>
     );
