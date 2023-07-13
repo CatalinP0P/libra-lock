@@ -52,7 +52,7 @@ export default function SignIn() {
             <div
                 className={
                     'relative w-[75%] max-w-[750px] h-full hidden xl:block ' +
-                    (theme == 'dark' ? 'bg-secondary/10' : 'bg-secondary/50')
+                    (theme == 'dark' ? 'bg-secondary/10' : 'bg-secondary/10')
                 }
             >
                 <div className="absolute left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] flex flex-col gap-8 items-center">
