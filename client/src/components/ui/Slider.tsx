@@ -14,7 +14,7 @@ export default function Slider({
     return (
         <div
             className={
-                'transition-all p-1 w-[60px] rounded-full flex-row ' +
+                'cursor-pointer transition-all p-1 w-[60px] rounded-full flex-row ' +
                 (checked ? 'bg-secondary/50' : 'bg-primary/90 dark:bg-white/90')
             }
             onClick={onChange}
