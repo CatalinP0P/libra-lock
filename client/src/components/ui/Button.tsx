@@ -1,5 +1,11 @@
-import React, { EventHandler } from 'react';
+import React, { FC, ButtonHTMLAttributes, EventHandler } from 'react';
 import { useTheme } from '../../context/ThemeContext';
+
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+    variant?: 'primary' | 'secondary';
+    rounded?: boolean;
+    children?: React.ReactNode;
+}
 
 export default function Button({
     children,
@@ -7,13 +13,8 @@ export default function Button({
     onClick,
     variant = 'primary',
     rounded = true,
-}: {
-    children?: React.ReactNode;
-    className?: string;
-    onClick?: React.MouseEventHandler<HTMLButtonElement>;
-    variant?: 'primary' | 'secondary';
-    rounded?: boolean;
-}) {
+    ...props
+}: ButtonProps) {
     const { theme } = useTheme();
     var style = `transition-all hover:scale-[102%] text-xl p-2 ${
         variant == 'primary' ? 'text-white' : 'text-primary'
@@ -28,7 +29,7 @@ export default function Button({
     }  ${className}`;
 
     return (
-        <button className={style} onClick={onClick}>
+        <button className={style} onClick={onClick} {...props}>
             {children}
         </button>
     );

@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { ReactComponent as PersonSVG } from '../../assets/svgs/PersonFill.svg';
+import personSVG from '../../assets/svgs/PersonFill.svg';
 import * as colors from '../../static/colors';
 
 import { useAuth } from '../../context/AuthContext';
@@ -18,14 +19,32 @@ export default function AccountButton() {
         <>
             {user && (
                 <div className="relative">
-                    <img
-                        onClick={() => {
-                            if (setAccountDropdown)
-                                setAccountDropdown(!accountDropdown);
-                        }}
-                        className="w-[32px] h-[32px] rounded-full cursor-pointer"
-                        src={user?.photoURL as string}
-                    />
+                    {user.photoURL ? (
+                        <img
+                            onClick={() => {
+                                if (setAccountDropdown)
+                                    setAccountDropdown(!accountDropdown);
+                            }}
+                            className="w-[32px] h-[32px] rounded-full cursor-pointer"
+                            src={user?.photoURL as string}
+                        />
+                    ) : (
+                        <PersonSVG
+                            className="cursor-pointer"
+                            onClick={() => {
+                                if (setAccountDropdown)
+                                    setAccountDropdown(!accountDropdown);
+                            }}
+                            width={24}
+                            height={24}
+                            fill={
+                                theme == 'light'
+                                    ? colors.primary
+                                    : colors.secondary
+                            }
+                        />
+                    )}
+
                     <div
                         className={
                             'z-[100] absolute transition-all right-0 top-10 w-fit shadow-2xl h-fit text-end flex flex-col rounded-md ' +

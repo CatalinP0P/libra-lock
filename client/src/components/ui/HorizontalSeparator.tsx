@@ -14,11 +14,9 @@ export default function HorizontalSeparator({
 
     return (
         <div
-            className={
-                'flex flex-row items-center w-full ' +
-                (title ? ' gap-4 ' : '') +
-                className
-            }
+            className={`flex flex-row w-[100%] items-center  ${
+                title ? ' gap-4' : ''
+            } ${className} `}
         >
             <div
                 className={
