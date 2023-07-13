@@ -18,7 +18,6 @@ import { useAuth } from '../../context/AuthContext';
 import AuthLayout from './AuthLayout';
 import SignInForm from './SignInForm';
 
-
 export default function SignIn() {
     const { theme } = useTheme();
 
@@ -72,7 +71,14 @@ export default function SignIn() {
                         You can sign up and discover great amount of new
                         opportunities
                     </p>
-                    <Button className="px-16" variant="secondary">
+                    <Button
+                        className="px-16"
+                        variant="secondary"
+                        onClick={() =>
+                            (window.location.href =
+                                window.location.origin + '/signup')
+                        }
+                    >
                         Sign up
                     </Button>
                 </div>

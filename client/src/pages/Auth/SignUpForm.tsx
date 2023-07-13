@@ -51,7 +51,7 @@ export default function SignUpForm() {
 
     return (
         <form
-            className="w-full flex flex-col gap-4 text-center"
+            className="w-full flex flex-col gap-4 text-center items-center"
             autoComplete="do-not-autofill"
             onSubmit={handleSubmit}
         >
@@ -82,7 +82,7 @@ export default function SignUpForm() {
                 name="confirmPassword"
                 onChange={handleChange}
             />
-            <Button className="px-32">Create Account</Button>
+            <Button className="w-fit px-32 mt-4">Create Account</Button>
         </form>
     );
 }

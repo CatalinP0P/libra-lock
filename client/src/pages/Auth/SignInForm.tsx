@@ -46,7 +46,7 @@ export default function SignInForm() {
             <Button variant="primary" className="px-32 mt-8">
                 Login
             </Button>
-            <label>
+            <label className="xl:hidden">
                 No Account?{' '}
                 <a
                     className="font-bold underline underline-offset-2"
