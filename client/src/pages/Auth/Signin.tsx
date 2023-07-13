@@ -15,23 +15,14 @@ import SignDark from '../../assets/backgrounds/SignDark.png';
 import SignLight from '../../assets/backgrounds/SignLight.png';
 import { useActionData } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
+import AuthLayout from './AuthLayout';
+import SignInForm from './SignInForm';
 
 export default function SignIn() {
     const { theme } = useTheme();
 
     return (
-        <div
-            className={
-                'flex flex-row w-[%] h-screen overflow-hidden ' +
-                (theme == 'dark'
-                    ? 'bg-darkMode text-white'
-                    : 'bg-white text-black')
-            }
-        >
-            <Logo className="absolute left-0 top-0 m-6" />
-            <div className="absolute right-0 top-0 m-4 z-[10]">
-                <ThemeSlider />
-            </div>
+        <AuthLayout>
             <div className="relative w-full h-full">
                 <div className="absolute w-fit h-fit left-[50%] top-[50%] flex flex-col translate-x-[-50%] translate-y-[-50%] p-8 gap-4 items-center">
                     <label className="font-extrabold text-3xl sm:text-4xl md:text-6xl whitespace-nowrap">
@@ -46,13 +37,9 @@ export default function SignIn() {
                         <AppleButton />
                     </div>
 
-                    <HorizontalSeparator title="or" className="w-[50%]" />
+                    <HorizontalSeparator title="or" className="max-w-[75%]" />
 
-                    <FormInput placeholder="Email" />
-                    <FormInput placeholder="Password" type="password" />
-                    <Button variant="primary" className="px-32 mt-8">
-                        Login
-                    </Button>
+                    <SignInForm />
                 </div>
             </div>
             <div
@@ -89,6 +76,6 @@ export default function SignIn() {
                     </Button>
                 </div>
             </div>
-        </div>
+        </AuthLayout>
     );
 }

@@ -3,7 +3,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Layout from './Layout';
 import { ThemeProvider } from './context/ThemeContext';
 import Home from './pages/Home/Home';
-import SignIn from './pages/Auth/Signin';
+import SignIn from './pages/Auth/SignIn';
+import SignUp from './pages/Auth/SignUp';
 import './index.css';
 import { AuthProvider } from './context/AuthContext';
 import { PopupProvider } from './context/PopupContext';
@@ -23,6 +24,7 @@ function App() {
                                 }
                             />
                             <Route path="/signin" element={<SignIn />} />
+                            <Route path="/signup" element={<SignUp />} />
                         </Routes>
                     </BrowserRouter>
                 </PopupProvider>

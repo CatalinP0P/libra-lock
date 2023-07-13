@@ -21,10 +21,11 @@ export default function FormInput({
 }) {
     return (
         <div className="flex flex-col gap-1 w-full">
-            {title && <label className='ps-1' >{title}</label>}
+            {title && <label className="ps-1">{title}</label>}
             <input
                 placeholder={placeholder}
                 value={value}
+                name={name}
                 type={type}
                 className={
                     'rounded-full w-full border py-2 px-4 bg-transparent ' +
