@@ -49,17 +49,9 @@ export default function SignIn() {
                 }
             >
                 <img
-                    src={SignDark}
+                    src={theme == 'dark' ? SignDark : SignLight}
                     className={
-                        'absolute z-[1] left-0 transition-all top-[2px] object-cover w-full h-full ' +
-                        (theme == 'light' ? ' opacity-0' : ' opacity-100')
-                    }
-                />
-                <img
-                    src={SignLight}
-                    className={
-                        'absolute z-[1] left-0 transition-all top-[2px] object-cover w-full h-full ' +
-                        (theme == 'dark' ? ' opacity-0' : ' opacity-100')
+                        'absolute z-[1] left-0 top-0 object-cover w-full h-full'
                     }
                 />
 
