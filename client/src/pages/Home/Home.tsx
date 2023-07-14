@@ -10,10 +10,14 @@ export default function Home() {
     const { loading, user } = useAuth();
 
     return loading ? (
-        <label>Loading...</label>
+        <Layout>
+            <label className="absolute left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] font-bold text-6xl">
+                PULA ( la cererea lu Liviu =D )
+            </label>
+        </Layout>
     ) : (
         <Layout>
-            <Container>
+            <Container className="flex flex-cols items-center">
                 {user && (
                     <>
                         <label className="absolute left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%]">
@@ -23,6 +27,7 @@ export default function Home() {
                             onClick={async () =>
                                 console.log(await user.getIdToken())
                             }
+                            className="mx-auto mt-8"
                         >
                             Log Token
                         </Button>

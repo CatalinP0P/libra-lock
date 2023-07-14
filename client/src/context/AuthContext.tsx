@@ -67,13 +67,13 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
             });
     };
 
-    const signWithFacebook = () => {
+    const signWithFacebook = (callback: string = '/') => {
         const provider = new FacebookAuthProvider();
         firebase
             .auth()
             .signInWithPopup(provider)
             .then(() => {
-                window.location.href = window.location.origin;
+                window.location.href = window.location.origin + callback;
             })
             .catch((err) => {
                 console.log(err);

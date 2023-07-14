@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Container from '../../components/ui/Container';
 import * as colors from '../../static/colors';
 import Logo from '../../components/Header/Logo';
@@ -20,6 +20,7 @@ import SignInForm from './SignInForm';
 
 export default function SignIn() {
     const { theme } = useTheme();
+    const { user } = useAuth();
 
     return (
         <AuthLayout>
