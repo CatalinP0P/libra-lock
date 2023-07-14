@@ -67,7 +67,18 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
             });
     };
 
-    const signWithFacebook = () => {};
+    const signWithFacebook = () => {
+        const provider = new FacebookAuthProvider();
+        firebase
+            .auth()
+            .signInWithPopup(provider)
+            .then(() => {
+                window.location.href = window.location.origin;
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
 
     const signWithApple = () => {};
 
