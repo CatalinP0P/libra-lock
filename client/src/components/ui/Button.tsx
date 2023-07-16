@@ -16,7 +16,7 @@ export default function Button({
     ...props
 }: ButtonProps) {
     const { theme } = useTheme();
-    var style = `transition-all hover:scale-[110%] text-xl p-2 ${
+    var style = `transition-all hover:scale-[105%] text-xl p-2 ${
         variant == 'primary' ? 'text-white' : 'text-primary'
     } ${rounded ? 'rounded-full' : ''} ${
         variant == 'primary'
