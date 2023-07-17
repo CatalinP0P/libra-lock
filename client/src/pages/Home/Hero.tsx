@@ -10,11 +10,11 @@ export default function Hero() {
 
     return (
         <div className="w-full bg-transparent">
-            <Container className="relative flex flex-col gap-4 w-full min-h-[60vh] bg-white justify-center pt-44">
-                <img
-                    className="absolute left-0 top-0 w-full h-full object-cover select-none pointer-events-none"
-                    src={theme == 'dark' ? heroDarkImage : heroLightImage}
-                />
+            <img
+                className="absolute left-0 top-0 w-full h-full object-cover select-none pointer-events-none"
+                src={theme == 'dark' ? heroDarkImage : heroLightImage}
+            />
+            <Container className="relative flex flex-col gap-4 w-full min-h-[60vh] justify-center pt-44">
                 <div className="flex flex-col lg:flex-row justify-between w-full items-center lg:items-start lg:pt-32 gap-32">
                     <label className="text-6xl lg:text-8xl text-white z-[10] lg:max-w-[5em] mx-auto pt-12">
                         REAL BOOKS
