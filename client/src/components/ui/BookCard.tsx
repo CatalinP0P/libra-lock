@@ -1,12 +1,17 @@
 'use client';
+
 import React from 'react';
+import Button from './Button';
+
 import { Rating } from '@mui/material';
 import { ReactComponent as CoinSVG } from '../../assets/svgs/Coin.svg';
-import Button from './Button';
 import { useTheme } from '../../context/ThemeContext';
 import { primary } from '../../static/colors';
+import { useNavigate } from 'react-router-dom';
+import Book from '../../pages/Book/Book';
 
 interface bookProps {
+    id: string;
     title: string;
     imageURL: string;
     price: number;
@@ -15,15 +20,18 @@ interface bookProps {
 }
 
 export default function BookCard({
+    id,
     title,
     imageURL,
     price,
     author,
     rating,
 }: bookProps) {
+    const navigate = useNavigate();
     const { theme } = useTheme();
     return (
         <div
+            onClick={() => navigate('/' + id)}
             className={
                 'flex flex-col transition-all relative w-full cursor-pointer items-start rounded-md text-start shadow-2xl ' +
                 (theme == 'dark'
@@ -52,13 +60,14 @@ export default function BookCard({
                 <label className="opacity-50 text-base ms-1">{author}</label>
                 <Rating value={rating} readOnly={true} size="medium" />
                 <div className="flex flex-row items-center gap-1 mt-1">
-                    <label>{price}</label>
                     <CoinSVG
                         height={16}
                         width={16}
                         fill={theme == 'dark' ? 'white' : 'secondary'}
                     />
+                    <label>{price}</label>
                 </div>
+
                 <div className="grid grid-cols-2 gap-1 w-full pt-4">
                     <Button
                         variant="primary"

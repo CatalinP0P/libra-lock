@@ -30,6 +30,7 @@ export default function Home() {
                         return (
                             <BookCard
                                 key={book.id || Math.random() * 1000}
+                                id={book.id}
                                 title={book.title}
                                 author={book.author}
                                 imageURL={book.imageURL}

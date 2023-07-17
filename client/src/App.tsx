@@ -4,6 +4,7 @@ import Layout from './Layout';
 import { ThemeProvider } from './context/ThemeContext';
 import Home from './pages/Home/Home';
 import SignIn from './pages/Auth/SignIn';
+import Book from './pages/Book/Book';
 import SignUp from './pages/Auth/SignUp';
 import './index.css';
 import { AuthProvider } from './context/AuthContext';
@@ -25,6 +26,7 @@ function App() {
                             />
                             <Route path="/signin" element={<SignIn />} />
                             <Route path="/signup" element={<SignUp />} />
+                            <Route path="/:id" element={<Book />} />
                         </Routes>
                     </BrowserRouter>
                 </PopupProvider>
