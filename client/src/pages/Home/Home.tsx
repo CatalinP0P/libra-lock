@@ -21,8 +21,8 @@ export default function Home() {
     ) : (
         <Layout>
             <Hero />
-            <Container className="flex flex-col items-start gap-4 mt-32 py-24">
-                <h2 className="text-3xl transition-all md:text-4xl text-start font-extrabold block">
+            <Container className="flex flex-col items-start gap-4 mt-32 py-24 z-[5]">
+                <h2 className="text-3xl transition-all md:text-4xl text-start font-extrabold block z-[5]">
                     Recommended Books
                 </h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 w-full gap-4">
