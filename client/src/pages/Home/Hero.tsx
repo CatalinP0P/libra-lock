@@ -23,7 +23,7 @@ export default function Hero() {
             />
 
             <img
-                className="absolute bottom-[-10rem] right-[-10rem] w-[30%] min-w-[20rem] max-w-[30rem] z-[2]"
+                className="absolute bottom-[-10rem] right-[-10rem] w-[30%] min-w-[20rem] max-w-[30rem] z-[0]"
                 src={theme == 'dark' ? darkRight : whiteRight}
             />
             <Container className="relative flex flex-col gap-4 w-full min-h-[60vh] justify-center pt-44">
