@@ -14,7 +14,10 @@ export default function Logo({ className }: { className?: string }) {
         >
             <img
                 src={theme == 'dark' ? logoDark : logoWhite}
-                className={'h-[40px] cursor-pointer md:h-[64px] ' + className}
+                className={
+                    'h-[40px] transition-all  cursor-pointer md:h-[64px] ' +
+                    className
+                }
             />
         </div>
     );

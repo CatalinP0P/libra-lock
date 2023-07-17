@@ -1,18 +1,31 @@
 'use client';
 import React from 'react';
 import { Rating } from '@mui/material';
-import bookImage from '../../assets/svgs/atomichabits.gif';
 import { ReactComponent as CoinSVG } from '../../assets/svgs/Coin.svg';
 import Button from './Button';
 import { useTheme } from '../../context/ThemeContext';
 import { primary } from '../../static/colors';
 
-export default function BookCard() {
+interface bookProps {
+    title: string;
+    imageURL: string;
+    price: number;
+    author: string;
+    rating: 1 | 2 | 3 | 4 | 5;
+}
+
+export default function BookCard({
+    title,
+    imageURL,
+    price,
+    author,
+    rating,
+}: bookProps) {
     const { theme } = useTheme();
     return (
         <div
             className={
-                'flex flex-col transition-all relative w-full h-full cursor-pointer items-start rounded-md text-start shadow-2xl ' +
+                'flex flex-col transition-all relative w-full cursor-pointer items-start rounded-md text-start shadow-2xl ' +
                 (theme == 'dark'
                     ? ' bg-secondary/5 text-white'
                     : 'bg-white text-black')
@@ -21,11 +34,11 @@ export default function BookCard() {
             <div className="relative h-[100%] w-full">
                 <img
                     className="relative w-[60%] h-[100%] mx-auto z-[10]"
-                    src={bookImage}
+                    src={imageURL}
                 />
                 <img
-                    className="absolute left-0 top-0 w-full h-full z-[1] object-fill"
-                    src={bookImage}
+                    className="absolute left-0 top-0 w-full h-full z-[1] object-cover"
+                    src={imageURL}
                 />
                 <div
                     className={
@@ -35,12 +48,11 @@ export default function BookCard() {
                 />
             </div>
             <div className="flex flex-col gap-1 px-4 pb-4 w-full">
-                <label className="font-bold text-lg pt-4 ms-1">
-                    Atomic Habits
-                </label>
-                <Rating value={4} readOnly={true} size="medium" />
+                <label className="font-bold text-lg pt-4 ms-1">{title}</label>
+                <label className="opacity-50 text-base ms-1">{author}</label>
+                <Rating value={rating} readOnly={true} size="medium" />
                 <div className="flex flex-row items-center gap-1 mt-1">
-                    <label>120</label>
+                    <label>{price}</label>
                     <CoinSVG
                         height={16}
                         width={16}
