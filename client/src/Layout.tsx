@@ -12,7 +12,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     }, [localStorage.theme]);
 
     return (
-        <div className="flex flex-col min-h-screen bg-white dark:bg-darkMode text-primary dark:text-white transition-colors">
+        <div className="flex flex-col min-h-screen bg-white dark:bg-darkMode text-primary dark:text-white">
             <Header />
             <div className="flex-1">{children}</div>
             <Footer />
