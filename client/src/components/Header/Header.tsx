@@ -17,7 +17,7 @@ export default function Header() {
     const navigate = useNavigate();
 
     return (
-        <div className="absolute top-0 left-0 right-0 border-b-2 border-secondary/10 z-[10]">
+        <div className="absolute top-0 left-0 right-0 border-b-2 border-secondary/10 z-[100]">
             <Container className="flex flex-row py- justify-between py-2 items-center">
                 <Logo />
                 <div className="flex flex-row gap-4 items-center">
