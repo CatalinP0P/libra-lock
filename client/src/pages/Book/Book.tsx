@@ -14,11 +14,33 @@ import { useBooks } from '../../hooks/useBooks';
 import { Rating } from '@mui/material';
 import BookCard from '../../components/ui/BookCard';
 import BookImage from '../../components/ui/BookImage';
+import profileImage from '../../assets/profileImage.webp';
 
 export default function Book(props: any) {
     const [book, setBook] = useState<any>(null);
-    const { theme } = useTheme();
+    const [bookReviews, setBookReviews] = useState<any[]>([
+        {
+            imageURL: profileImage,
+            name: 'Profile Name',
+            rating: 1,
+            text: 'Straight BAAAAD ( this is a dummy comment )',
+        },
+        {
+            imageURL: profileImage,
+            name: 'Profile Name',
+            rating: 5,
+            text: 'Excelence! ( this is a dummy comment )',
+        },
+        {
+            imageURL: profileImage,
+            name: 'Profile Name',
+            rating: 4,
+            text: 'Very nice book ( this is a dummy comment )',
+        },
+    ]);
+
     const navigate = useNavigate();
+    const { theme } = useTheme();
     const { id } = useParams();
     const { books, loading } = useBooks();
 
@@ -36,6 +58,7 @@ export default function Book(props: any) {
 
     useEffect(() => {
         if (loading) return;
+
         fetchBook();
     }, [id]);
 
@@ -43,10 +66,10 @@ export default function Book(props: any) {
         <></>
     ) : (
         <Layout>
-            <Container className="py-32 flex flex-col gap-24">
-                <div className="grid grid-cols-1 md:grid-cols-2 pt-8 gap-24">
+            <Container className="py-32 flex flex-col gap-32">
+                <div className="grid grid-cols-1 md:grid-cols-2 pt-8 gap-8 md:gap-24">
                     <BookImage imageURL={book.imageURL} />
-                    <div className="flex flex-col px-8 gap-8 justify-between">
+                    <div className="flex flex-col justify-between">
                         <div className="flex flex-col gap-2">
                             <label className="text-4xl font-bold">
                                 {book.title}
@@ -101,20 +124,53 @@ export default function Book(props: any) {
                     </div>
                 </div>
                 <div className="flex flex-col gap-2">
-                    <label className="text-2xl font-bold">Description</label>
+                    <label className="text-3xl transition-all md:text-4xl text-start font-extrabold block z-[5]">
+                        Description
+                    </label>
                     <label className="font-light ">{book.description}</label>
                 </div>
 
-                <div className="flex flex-col gap-2 w-full">
-                    <label>You may also like</label>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4">
+                <div className="flex flex-col gap-4 w-full">
+                    <label className="text-3xl transition-all md:text-4xl text-start font-extrabold block z-[5]">
+                        You may also like
+                    </label>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
                         {books.map((book) => {
                             return (
                                 <div
                                     onClick={() => navigate('/' + book.id)}
-                                    className=" cursor-pointer"
+                                    className=" cursor-pointer shadow-2xl"
                                 >
                                     <BookImage imageURL={book.imageURL} />
+                                </div>
+                            );
+                        })}
+                    </div>
+                </div>
+
+                <div className="flex flex-col gap-4 w-full">
+                    <label className="text-3xl transition-all md:text-4xl text-start font-extrabold block z-[5]">
+                        Reviews
+                    </label>
+                    <div className="flex flex-col gap-8 w-full">
+                        {bookReviews.map((review) => {
+                            return (
+                                <div className="flex flex-col gap-2 border-t w-full">
+                                    <div className="flex flex-row gap-4 items-center w-full pt-4 ">
+                                        <img
+                                            className="w-12 h-12 rounded-full"
+                                            src={review.imageURL}
+                                        />
+                                        <div className="flex flex-col text-start items-start h-full justify-between pb-1">
+                                            <label>{review.name}</label>
+                                            <Rating
+                                                readOnly={true}
+                                                size="small"
+                                                value={review.rating}
+                                            />
+                                        </div>
+                                    </div>
+                                    <p className="ms-16 ps-1">{review.text}</p>
                                 </div>
                             );
                         })}
