@@ -7,6 +7,7 @@ import BookCard from '../../components/ui/BookCard';
 
 import { useBooks } from '../../hooks/useBooks';
 import { useAuth } from '../../context/AuthContext';
+import Hero from './Hero';
 
 export default function Home() {
     const { loading, user } = useAuth();
@@ -19,7 +20,8 @@ export default function Home() {
         </Layout>
     ) : (
         <Layout>
-            <Container className="flex flex-col items-start gap-4 py-24">
+            <Hero />
+            <Container className="flex flex-col items-start gap-4 mt-32 py-24">
                 <h2 className="text-3xl transition-all md:text-4xl text-start font-extrabold block">
                     Recommended Books
                 </h2>
