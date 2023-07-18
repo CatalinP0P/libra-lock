@@ -36,7 +36,7 @@ export default function BookCard({
                 'flex flex-col transition-all relative w-full cursor-pointer items-start rounded-md text-start shadow-2xl ' +
                 (theme == 'dark'
                     ? ' bg-secondary/5 text-white'
-                    : 'bg-white text-black')
+                    : 'bg-white text-primary')
             }
         >
             <div className="relative h-[100%] w-full">

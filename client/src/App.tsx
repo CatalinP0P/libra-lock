@@ -9,6 +9,7 @@ import SignUp from './pages/Auth/SignUp';
 import './index.css';
 import { AuthProvider } from './context/AuthContext';
 import { PopupProvider } from './context/PopupContext';
+import BuyCoins from './pages/BuyCoins/BuyCoins';
 
 function App() {
     return (
@@ -26,6 +27,7 @@ function App() {
                             />
                             <Route path="/signin" element={<SignIn />} />
                             <Route path="/signup" element={<SignUp />} />
+                            <Route path="/buycoins" element={<BuyCoins />} />
                             <Route path="/:id" element={<Book />} />
                         </Routes>
                     </BrowserRouter>
