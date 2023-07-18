@@ -13,11 +13,7 @@ export default function Home() {
     const { loading, user } = useAuth();
     const { books } = useBooks();
     return loading ? (
-        <Layout>
-            <label className="absolute left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] font-bold text-6xl">
-                PULA ( la cererea lu Liviu =D )
-            </label>
-        </Layout>
+        <Layout></Layout>
     ) : (
         <Layout>
             <Hero />
