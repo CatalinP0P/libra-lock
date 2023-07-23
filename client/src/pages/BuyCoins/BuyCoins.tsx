@@ -4,6 +4,9 @@ import Container from '../../components/ui/Container';
 import Button from '../../components/ui/Button';
 import * as colors from '../../static/colors';
 import { ReactComponent as CoinSVG } from '../../assets/svgs/Coin.svg';
+import circlesBackground from '../../assets/backgrounds/Version1 DC.png';
+import triangleBackground from '../../assets/backgrounds/Triangle1.png';
+import pBackground from '../../assets/backgrounds/Version1 P.png';
 
 import { useTheme } from '../../context/ThemeContext';
 
@@ -71,13 +74,26 @@ const CoinsCard = ({ price, coins }: { coins: number; price: number }) => {
     return (
         <div
             className={
-                'rounded-md flex flex-col items-center gap-16 p-4 shadow-xl w-full border-2 ' +
+                'relative rounded-md flex flex-col items-center shadow-xl w-full border overflow-hidden ' +
                 (theme == 'dark'
                     ? ' bg-secondary/5 text-white'
                     : ' bg-white text-primary')
             }
         >
-            <label className="flex flex-row items-center text-6xl font-bold gap-2 pt-8">
+            <img
+                className="absolute top-0 right-0 w-[100px] h-fit z-[0] me-2"
+                src={circlesBackground}
+            />
+            <img
+                className="absolute bottom-0 right-0 h-[75px] w-fit z-[0]  me-6 mb-2"
+                src={triangleBackground}
+            />
+            <img
+                className="absolute left-[-2px] top-[-2px] h-[200px] z-[0]"
+                src={pBackground}
+            />
+
+            <label className="flex flex-row items-center text-6xl font-bold gap-2 pt-16 pb-24 z-[1]">
                 {coins}
                 <CoinSVG
                     height={64}
@@ -86,7 +102,7 @@ const CoinsCard = ({ price, coins }: { coins: number; price: number }) => {
                 />
             </label>
 
-            <Button className="w-full" rounded={false}>
+            <Button className="w-full z-[1]" rounded={false} variant='primary' >
                 Buy for {price}€
             </Button>
         </div>

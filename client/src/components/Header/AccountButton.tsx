@@ -25,7 +25,7 @@ export default function AccountButton() {
                                 if (setAccountDropdown)
                                     setAccountDropdown(!accountDropdown);
                             }}
-                            className="w-[32px] h-[32px] rounded-full cursor-pointer"
+                            className="w-[40px] h-[40px] rounded-full cursor-pointer"
                             src={user?.photoURL as string}
                         />
                     ) : (
@@ -35,8 +35,8 @@ export default function AccountButton() {
                                 if (setAccountDropdown)
                                     setAccountDropdown(!accountDropdown);
                             }}
-                            width={24}
-                            height={24}
+                            width={40}
+                            height={40}
                             fill={
                                 theme == 'light'
                                     ? colors.primary
@@ -47,13 +47,16 @@ export default function AccountButton() {
 
                     <div
                         className={
-                            'z-[100] absolute transition-all right-0 top-10 w-fit shadow-2xl h-fit text-end flex flex-col rounded-md ' +
+                            'z-[100] fixed md:absolute transition-all right-0 left-0 md:left-auto w-full md:w-fit top-14 md:top-10 shadow-2xl h-fit text-end flex flex-col rounded-md ' +
                             (theme == 'light' ? 'bg-white' : 'bg-primary') +
                             (accountDropdown
                                 ? ' opacity-100 pointer-events-auto'
                                 : ' opacity-0 translate-y-[-20%] pointer-events-none')
                         }
                     >
+                        <label className="px-8 whitespace-nowrap py-2 hover:brightness-75 cursor-pointer">
+                            Logged in as <strong>{user.email}</strong>
+                        </label>
                         <label className="px-8 whitespace-nowrap py-2 hover:brightness-75 cursor-pointer">
                             My account
                         </label>

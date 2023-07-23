@@ -22,11 +22,11 @@ export default function Hero() {
                 src={theme == 'dark' ? darkLeft : whiteLeft}
             />
 
-            <img
+            {/* <img
                 className="absolute bottom-[-10rem] right-[-10rem] w-[30%] min-w-[20rem] max-w-[30rem] z-[0]"
                 src={theme == 'dark' ? darkRight : whiteRight}
-            />
-            <Container className="relative flex flex-col gap-4 w-full min-h-[60vh] justify-center pt-44">
+            /> */}
+            <Container className="relative flex flex-col gap-4 min-h-[60vh] justify-center pt-44">
                 <div className="flex flex-col lg:flex-row justify-between w-full items-center lg:items-start lg:pt-32 gap-32">
                     <label className="text-6xl lg:text-8xl z-[2] lg:max-w-[5em] mx-auto pt-12">
                         REAL BOOKS

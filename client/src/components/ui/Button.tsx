@@ -16,13 +16,13 @@ export default function Button({
     ...props
 }: ButtonProps) {
     const { theme } = useTheme();
-    var style = `transition-all hover:scale-[105%] text-xl p-2 ${
+    var style = `transition-all box-border text-xl p-2 ${
         variant == 'primary' ? 'text-white' : 'text-primary'
     } ${rounded ? 'rounded-full' : ''} ${
         variant == 'primary'
             ? theme == 'dark'
-                ? 'bg-secondary border-2 border-secondary hover:bg-secondary/75 hover:border-secondary/75'
-                : 'bg-primary border-2 border-primary hover:bg-primary/75 hover:border-primary/75'
+                ? 'bg-secondary border-secondary hover:bg-secondary/75 hover:border-secondary/75'
+                : 'bg-primary border-primary hover:bg-primary/75 hover:border-primary/75'
             : theme == 'dark'
             ? 'border-2 border-secondary text-secondary hover:border-secondary/75 hover:text-secondary/75'
             : 'border-2 border-primary text-primary hover:border-primary/75 hover:text-primary/75'
