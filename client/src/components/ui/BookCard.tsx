@@ -31,7 +31,6 @@ export default function BookCard({
     const { theme } = useTheme();
     return (
         <div
-            onClick={() => navigate('/' + id)}
             className={
                 'flex flex-col transition-all relative w-full cursor-pointer items-start rounded-md text-start shadow-2xl ' +
                 (theme == 'dark'
@@ -42,6 +41,7 @@ export default function BookCard({
             <div className="relative h-[100%] w-full">
                 <img
                     className="relative w-[60%] h-[100%] mx-auto z-[10]"
+                    onClick={() => navigate('/' + id)}
                     src={imageURL}
                 />
                 <img
@@ -67,23 +67,22 @@ export default function BookCard({
                     />
                     <label>{price}</label>
                 </div>
-
-                <div className="grid grid-cols-2 gap-1 w-full pt-4">
-                    <Button
-                        variant="primary"
-                        className="w-full py-1"
-                        rounded={false}
-                    >
-                        Buy
-                    </Button>
-                    <Button
-                        variant="secondary"
-                        className="w-full py-1"
-                        rounded={false}
-                    >
-                        Rent
-                    </Button>
-                </div>
+            </div>
+            <div className="grid grid-cols-2 w-full pt-4 z-[5] pointer-events-auto">
+                <Button
+                    variant="primary"
+                    className="w-full py-1"
+                    rounded={false}
+                >
+                    Buy
+                </Button>
+                <Button
+                    variant="secondary"
+                    className="w-full py-1"
+                    rounded={false}
+                >
+                    Rent
+                </Button>
             </div>
         </div>
     );

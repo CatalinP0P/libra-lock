@@ -14,16 +14,16 @@ export default function Slider({
     return (
         <div
             className={
-                'cursor-pointer transition-all p-1 w-[60px] rounded-full flex-row ' +
+                'cursor-pointer transition-all p-1 w-[40px] rounded-full flex-row ' +
                 (checked ? 'bg-secondary/50' : 'bg-primary/90 dark:bg-white/90')
             }
             onClick={onChange}
         >
             <div
                 className={
-                    'w-[25px] relative h-[25px] transition-all items-center justify-center rounded-full ' +
+                    'w-[15px] relative h-[15px] transition-all items-center justify-center rounded-full ' +
                     (checked
-                        ? ' translate-x-[27px] bg-secondary'
+                        ? ' translate-x-[17px] bg-secondary'
                         : ' bg-secondary/75')
                 }
             >

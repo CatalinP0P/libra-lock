@@ -17,6 +17,7 @@ export default function Header() {
             <Container className="flex flex-row py- justify-between py-2 items-center">
                 <Logo />
                 <div className="flex flex-row gap-4 items-center">
+                    <ThemeSlider />
                     <label
                         className="flex flex-row items-center text-xl gap-2 cursor-pointer"
                         onClick={() => navigate('/buycoins')}
@@ -31,7 +32,6 @@ export default function Header() {
                         />
                     </label>
                     <AccountButton />
-                    <ThemeSlider />
                 </div>
             </Container>
         </div>

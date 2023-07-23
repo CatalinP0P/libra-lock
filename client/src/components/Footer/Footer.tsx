@@ -11,7 +11,7 @@ export default function Footer() {
     return (
         <div className="border-t-2 py-4 border-secondary/10">
             <Container className="flex flex-row justify-between">
-                <label className=" font-thin">© All Rights Reserved</label>
+                <label className="text-sm font-light">© All Rights Reserved</label>
                 <div className="flex flex-row gap-8 items-center">
                     <a href="https://facebook.com" className="cursor-pointer">
                         <FacebookSVG
