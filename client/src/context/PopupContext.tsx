@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 
 interface PopupProps {
     accountDropdown?: boolean;
@@ -17,6 +17,17 @@ export const PopupProvider = ({ children }: { children: React.ReactNode }) => {
     const closeAll = () => {
         setAccountDropdown(false);
     };
+
+    useEffect(() => {
+        const doc = document.getElementById('root');
+        if (accountDropdown) {
+            doc?.classList.add('h-[100vw]');
+            doc?.classList.add('md:h-fit');
+        } else {
+            doc?.classList.remove('h-[100vw]');
+            doc?.classList.remove('md:h-fit');
+        }
+    }, [accountDropdown]);
 
     return (
         <PopupContext.Provider
