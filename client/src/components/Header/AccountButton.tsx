@@ -47,7 +47,7 @@ export default function AccountButton() {
 
                     <div
                         className={
-                            'z-[100] fixed md:absolute transition-all right-0 left-0 md:left-auto w-full md:w-fit top-14 md:top-10 shadow-2xl h-fit text-end flex flex-col rounded-md ' +
+                            'z-[2] fixed md:absolute transition-all right-0 left-0 md:left-auto w-full md:w-fit top-14 md:top-10 shadow-2xl h-fit text-end flex flex-col rounded-md ' +
                             (theme == 'light' ? 'bg-white' : 'bg-primary') +
                             (accountDropdown
                                 ? ' opacity-100 pointer-events-auto'
