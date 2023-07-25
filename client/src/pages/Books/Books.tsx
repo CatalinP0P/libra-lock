@@ -1,122 +1,82 @@
-import React, { useEffect, useState } from 'react';
+import React, {
+    ChangeEventHandler,
+    FormEventHandler,
+    useEffect,
+    useState,
+} from 'react';
 
 import { useSearchParams } from 'react-router-dom';
 import { useTheme } from '../../context/ThemeContext';
+import { FormEvent } from 'react';
 import Layout from '../../Layout';
 import Container from '../../components/ui/Container';
-import FormInputFluid from '../../components/ui/forms/FormInputFluid';
-import FormSelectFluid from '../../components/ui/forms/FormSelectFluid';
+import FiltersForm from './FiltersForm';
 import Button from '../../components/ui/Button';
 
 export default function Books() {
     const [searchParams, setSearchParams] = useSearchParams();
-    const [newFilter, setNewFilter] = useState('');
+    const [mobileFilters, setMobileFilters] = useState(false);
+
     const { theme } = useTheme();
 
     useEffect(() => {
-        console.log(
-            searchParams.forEach((value, key) => {
-                console.log(key, value);
-            })
-        );
+        searchParams.forEach((value, key) => {
+            console.log(key, value);
+        });
     }, [searchParams]);
+
+    useEffect(() => {
+        const root = document.getElementById('root');
+        if (mobileFilters) {
+            root?.classList.add('h-[100vw]');
+            root?.classList.add('md:h-fit');
+        } else {
+            root?.classList.remove('h-[100vw]');
+            root?.classList.remove('md:h-fit');
+        }
+    }, [mobileFilters]);
 
     return (
         <Layout>
             <Container>
-                <div className="pt-24 flex flex-col w-full flex-1">
+                <div className="pt-24 flex flex-col w-full flex-1 ">
                     <div
                         className={
-                            'hidden flex-col w-[300px] lg:grid grid-cols-2' +
+                            'hidden w-[300px] lg:flex flex-col' +
                             (theme == 'dark'
                                 ? ' bg-darkMode-800'
                                 : ' bg-neutral-200')
                         }
                     >
-                        <label
-                            className={
-                                'col-span-2 border-b-2 px-3 pt-3 pb-8 text-2xl border-neutral-500 '
-                            }
-                        >
-                            Filters
-                        </label>
-                        <FormSelectFluid
-                            title="Genre"
-                            options={['Drama', 'Self Development', 'Action']}
-                            className="col-span-2"
-                            onChange={(e) => {
-                                console.log(e.target.value);
-                            }}
-                        />
-                        <FormInputFluid
-                            title="Min Price"
-                            placeholder="Minimum Price"
-                            type="number"
-                            className="border-r"
-                        />
-                        <FormInputFluid
-                            title="Max Price"
-                            placeholder="Maximum Price"
-                            type="number"
-                            className="border-s"
-                        />
-                        <div className="col-span-2 p-4 border-b border-neutral-500 flex flex-col">
-                            <label className="opacity-60">Authors</label>
-                            <div className="flex flex-col text-sm">
-                                <div className="flex flex-row gap-2">
-                                    <input id="ion" type="checkbox" />
-                                    <label>Ion Creanga</label>
-                                </div>
-                                <div className="flex flex-row gap-2">
-                                    <input type="checkbox" />
-                                    <label>Popa Liviu</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-span-2 p-4 border-b border-neutral-500 flex flex-col">
-                            <label className="opacity-60">Rating</label>
-                            <div className="flex flex-col text-sm">
-                                <div className="flex flex-row gap-2">
-                                    <input id="ion" type="checkbox" />
-                                    <label>1 Star</label>
-                                </div>
-                                <div className="flex flex-row gap-2">
-                                    <input type="checkbox" />
-                                    <label>2 Stars</label>
-                                </div>
-                                <div className="flex flex-row gap-2">
-                                    <input type="checkbox" />
-                                    <label>3 Stars</label>
-                                </div>
-                                <div className="flex flex-row gap-2">
-                                    <input type="checkbox" />
-                                    <label>4 Stars</label>
-                                </div>
-                                <div className="flex flex-row gap-2">
-                                    <input type="checkbox" />
-                                    <label>5 Stars</label>
-                                </div>
-                            </div>
-                        </div>
-                        <FormInputFluid
-                            title="Min Pages"
-                            placeholder="ex: 100"
-                            type="number"
-                            className="border-r"
-                        />
-                        <FormInputFluid
-                            title="Max Pages"
-                            placeholder="ex: 310"
-                            type="number"
-                            className="border-s"
-                        />
-                        <Button
-                            className="col-span-2"
-                            rounded={false}
-                            variant="secondary"
-                        >
-                            Apply Filters
-                        </Button>
+                        <FiltersForm />
+                    </div>
+                    <Button
+                        variant="secondary"
+                        rounded={false}
+                        className="lg:hidden"
+                        onClick={() => setMobileFilters(!mobileFilters)}
+                    >
+                        Filters
+                    </Button>
+                    <div
+                        className={
+                            'absolute left-0 top-0 right-0 bottom-0 bg-[rgba(0,0,0,.5)] z-[9] lg:hidden ' +
+                            (mobileFilters ? ' ' : ' hidden')
+                        }
+                        onClick={() => setMobileFilters(false)}
+                    />
+                    <div
+                        className={
+                            'fixed left-0 lg:hidden w-[40%] max-w-[300px] min-w-[250px] top-0 transition-all bottom-0 z-[10] ' +
+                            (mobileFilters
+                                ? ' pointer-event-auto '
+                                : ' pointer-events-none translate-x-[-100%] ') +
+                            (theme == 'dark'
+                                ? ' bg-darkMode-800'
+                                : ' bg-neutral-200')
+                        }
+                    >
+                        <FiltersForm />
                     </div>
                 </div>
             </Container>
