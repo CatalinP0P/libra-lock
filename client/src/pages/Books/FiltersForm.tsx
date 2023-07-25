@@ -13,6 +13,7 @@ import { useSearchParams } from 'react-router-dom';
 import { StringMappingType } from 'typescript';
 
 interface FilterProps {
+    q: string;
     genre: string | null;
     minPrice: number | null;
     maxPrice: number | null;
@@ -26,7 +27,8 @@ export default function FiltersForm() {
     const [searchParams, setSearchParams] = useSearchParams();
 
     const [filterData, setFilterData] = useState<FilterProps>({
-        genre: searchParams.get('genre') || 'Drama',
+        q: searchParams.get('q') || '',
+        genre: searchParams.get('genre') || 'Show All',
         minPrice: parseInt(searchParams.get('minPrice') + '') || null,
         maxPrice: parseInt(searchParams.get('maxPrice') + '') || null,
         minPages: parseInt(searchParams.get('minPages') + '') || null,
@@ -44,7 +46,7 @@ export default function FiltersForm() {
         var filters: any = filterData;
         var newFilters = {};
         Object.keys(filterData).forEach((key: string) => {
-            if (filters[key]) {
+            if (filters[key] && filters[key] != 'Show All') {
                 newFilters = { ...newFilters, [key]: filters[key] };
             }
         });
@@ -118,7 +120,7 @@ export default function FiltersForm() {
                 title="Genre"
                 name="genre"
                 defaultValue={searchParams.get('genre') || ''}
-                options={['Drama', 'Self Development', 'Action']}
+                options={['Show All', 'Drama', 'Self Development', 'Action']}
                 className="col-span-2"
                 onChange={handleChange}
             />
