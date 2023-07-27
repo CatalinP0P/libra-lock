@@ -12,6 +12,9 @@ import { useParams } from 'react-router-dom';
 import { usePopup } from '../../context/PopupContext';
 import { useBooks } from '../../hooks/useBooks';
 import { Rating } from '@mui/material';
+
+import RentModal from '../../components/ui/RentModal';
+import BuyModal from '../../components/ui/BuyModal';
 import BookCard from '../../components/ui/BookCard';
 import BookImage from '../../components/ui/BookImage';
 import profileImage from '../../assets/profileImage.webp';
@@ -38,6 +41,22 @@ export default function Book(props: any) {
             text: 'Very nice book ( this is a dummy comment )',
         },
     ]);
+
+    const [bookId, setBookId] = useState<string>('');
+    const [rentModalVisibility, setRentModalVisibility] =
+        useState<boolean>(false);
+    const [buyModalVisibility, setBuyModalVisibility] =
+        useState<boolean>(false);
+
+    const rentBook = (id: string) => {
+        setBookId(id);
+        setRentModalVisibility(true);
+    };
+
+    const buyBook = (id: string) => {
+        setBookId(id);
+        setBuyModalVisibility(true);
+    };
 
     const navigate = useNavigate();
     const { theme } = useTheme();
@@ -66,6 +85,16 @@ export default function Book(props: any) {
         <></>
     ) : (
         <Layout>
+            <RentModal
+                visible={rentModalVisibility}
+                setVisible={setRentModalVisibility}
+                id={bookId}
+            />
+            <BuyModal
+                visible={buyModalVisibility}
+                setVisible={setBuyModalVisibility}
+                id={bookId}
+            />
             <Container className="py-32 flex flex-col gap-32">
                 <div className="grid grid-cols-1 md:grid-cols-2 pt-8 gap-8 md:gap-24">
                     <BookImage imageURL={book.imageURL} />
@@ -106,6 +135,7 @@ export default function Book(props: any) {
                             </div>
                             <div className="flex flex-row gap-2 w-full">
                                 <Button
+                                    onClick={() => buyBook(book.id)}
                                     className="w-full"
                                     variant="primary"
                                     rounded={false}
@@ -115,6 +145,7 @@ export default function Book(props: any) {
                                 <Button
                                     className="w-full"
                                     variant="secondary"
+                                    onClick={() => rentBook(book.id)}
                                     rounded={false}
                                 >
                                     Rent

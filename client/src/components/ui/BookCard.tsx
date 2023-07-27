@@ -17,6 +17,8 @@ interface bookProps {
     price: number;
     author: string;
     rating: 1 | 2 | 3 | 4 | 5;
+    onRent?: any;
+    onBuy?: any;
 }
 
 export default function BookCard({
@@ -26,9 +28,12 @@ export default function BookCard({
     price,
     author,
     rating,
+    onRent,
+    onBuy,
 }: bookProps) {
     const navigate = useNavigate();
     const { theme } = useTheme();
+
     return (
         <div
             className={
@@ -73,6 +78,7 @@ export default function BookCard({
                     variant="primary"
                     className="w-full py-1"
                     rounded={false}
+                    onClick={onBuy ? onBuy : null}
                 >
                     Buy
                 </Button>
@@ -80,6 +86,7 @@ export default function BookCard({
                     variant="secondary"
                     className="w-full py-1"
                     rounded={false}
+                    onClick={onRent}
                 >
                     Rent
                 </Button>
