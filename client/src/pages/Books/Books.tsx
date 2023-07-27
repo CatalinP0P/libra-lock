@@ -20,12 +20,6 @@ export default function Books() {
     const { theme } = useTheme();
 
     useEffect(() => {
-        searchParams.forEach((value, key) => {
-            console.log(key, value);
-        });
-    }, [searchParams]);
-
-    useEffect(() => {
         const root = document.getElementById('root');
         if (mobileFilters) {
             root?.classList.add('h-[100vw]');
@@ -35,6 +29,10 @@ export default function Books() {
             root?.classList.remove('md:h-fit');
         }
     }, [mobileFilters]);
+
+    useEffect(() => {
+        setMobileFilters(false);
+    }, [searchParams]);
 
     return (
         <Layout>

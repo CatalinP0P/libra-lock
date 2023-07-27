@@ -4,6 +4,7 @@ import Slider from '../../components/ui/Slider';
 import Container from '../../components/ui/Container';
 import Button from '../../components/ui/Button';
 import BookCard from '../../components/ui/BookCard';
+import circleBackground from '../../assets/backgrounds/Version2 DC.png';
 
 import { useNavigate } from 'react-router-dom';
 import { useBooks } from '../../hooks/useBooks';
@@ -13,11 +14,15 @@ import RentModal from '../../components/ui/RentModal';
 import BuyModal from '../../components/ui/BuyModal';
 import { useAuthors } from '../../hooks/useAuthors';
 import PersonCard from '../../components/ui/PersonCard';
+import { useGenres } from '../../hooks/useGenres';
+import CategoryCard from '../../components/ui/CategoryCard';
 
 export default function Home() {
     const { loading, user } = useAuth();
+
     const { books } = useBooks();
     const { authors } = useAuthors();
+    const { genres } = useGenres();
 
     const navigate = useNavigate();
 
@@ -66,6 +71,22 @@ export default function Home() {
                                 }
                                 name={author.name}
                                 imageURL={author.imageURL}
+                            />
+                        ))}
+                    </div>
+                </Container>
+
+                <Container className="flex flex-col gap-4 z-[5]">
+                    <h2 className="text-3xl transition-all md:text-4xl text-start font-extrabold block z-[5]">
+                        Explore by Genre
+                    </h2>
+                    <div className="grid md:grid-cols-3 grid-cols-2 gap-4 w-full">
+                        {genres.map((genre: any) => (
+                            <CategoryCard
+                                onClick={() =>
+                                    navigate('/books?genre=' + genre.name)
+                                }
+                                name={genre.name}
                             />
                         ))}
                     </div>
