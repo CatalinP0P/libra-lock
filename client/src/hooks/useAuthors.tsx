@@ -36,6 +36,7 @@ export const useAuthors = () => {
                     'https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Ion_Creanga-Foto03.jpg/800px-Ion_Creanga-Foto03.jpg',
             },
         ]);
+        setLoading(false);
     };
 
     useEffect(() => {

@@ -1,7 +1,7 @@
 import React from 'react';
 import Container from '../../components/ui/Container';
 import { useTheme } from '../../context/ThemeContext';
-import { ReactComponent as HeroImage } from '../../assets/svgs/HeroImage.svg';
+import { ReactComponent as HeroImage } from '../../assets/svgs/heroImage2.svg';
 
 import heroDarkImage from '../../assets/backgrounds/HeroDark.png';
 import heroLightImage from '../../assets/backgrounds/HeroLight.png';

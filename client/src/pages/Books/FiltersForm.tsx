@@ -2,6 +2,7 @@ import React, {
     ChangeEventHandler,
     FormEvent,
     FormEventHandler,
+    useEffect,
     useState,
 } from 'react';
 import FormInputFluid from '../../components/ui/forms/FormInputFluid';
@@ -13,29 +14,32 @@ import { useSearchParams } from 'react-router-dom';
 import { StringMappingType } from 'typescript';
 import { useAuth } from '../../context/AuthContext';
 import { useAuthors } from '../../hooks/useAuthors';
+import { useGenres } from '../../hooks/useGenres';
 
 interface FilterProps {
     q: string;
-    genre: string | null;
     minPrice: number | null;
     maxPrice: number | null;
     minPages: number | null;
     maxPages: number | null;
+    genre: string[];
     authors: string[];
     rating: string[];
 }
 
 export default function FiltersForm() {
     const [searchParams, setSearchParams] = useSearchParams();
+
     const { authors } = useAuthors();
+    const { genres } = useGenres();
 
     const [filterData, setFilterData] = useState<FilterProps>({
         q: searchParams.get('q') || '',
-        genre: searchParams.get('genre') || 'Show All',
         minPrice: parseInt(searchParams.get('minPrice') + '') || null,
         maxPrice: parseInt(searchParams.get('maxPrice') + '') || null,
         minPages: parseInt(searchParams.get('minPages') + '') || null,
         maxPages: parseInt(searchParams.get('maxPages') + '') || null,
+        genre: searchParams.getAll('genre'),
         authors: searchParams.getAll('authors'),
         rating: searchParams.getAll('rating'),
     });
@@ -106,10 +110,33 @@ export default function FiltersForm() {
 
                 setFilterData({ ...filterData, [name]: newArray });
             }
+        } else if (name == 'genre') {
+            const genre = e.target.getAttribute('genre-name');
+            if (e.target.checked)
+                if (filterData.genre == null) {
+                    setFilterData({ ...filterData, [name]: [genre] });
+                } else {
+                    setFilterData({
+                        ...filterData,
+                        [name]: [...filterData.genre, genre],
+                    });
+                }
+            else {
+                var newArray: string[] = [];
+                const ratings = filterData.rating;
+                for (var i = 0; i < ratings.length; i++) {
+                    if (ratings[i] != genre) {
+                        newArray.push(ratings[i]);
+                    }
+                }
+
+                setFilterData({ ...filterData, [name]: newArray });
+            }
         } else {
             setFilterData({ ...filterData, [name]: value });
         }
     };
+
     return (
         <form className="w-full grid grid-cols-2" onSubmit={handleSubmit}>
             <label
@@ -119,14 +146,25 @@ export default function FiltersForm() {
             >
                 Filters
             </label>
-            <FormSelectFluid
-                title="Genre"
-                name="genre"
-                defaultValue={searchParams.get('genre') || ''}
-                options={['Show All', 'Drama', 'Self Development', 'Action']}
-                className="col-span-2"
-                onChange={handleChange}
-            />
+            <div className="col-span-2 p-4 border-b border-neutral-500 flex flex-col">
+                <label className="opacity-60">Genres</label>
+                <div className="flex flex-col text-sm max-h-[10rem] overflow-auto">
+                    {genres.map((genre: any) => (
+                        <div className="flex flex-row gap-2" key={genre.name}>
+                            <input
+                                type="checkbox"
+                                genre-name={genre.name}
+                                name="genre"
+                                defaultChecked={filterData.genre.includes(
+                                    genre.name
+                                )}
+                                onChange={handleChange}
+                            />
+                            <label>{genre.name}</label>
+                        </div>
+                    ))}
+                </div>
+            </div>
             <FormInputFluid
                 title="Min Price"
                 defaultValue={filterData.minPrice || ''}
@@ -147,9 +185,9 @@ export default function FiltersForm() {
             />
             <div className="col-span-2 p-4 border-b border-neutral-500 flex flex-col">
                 <label className="opacity-60">Authors</label>
-                <div className="flex flex-col text-sm">
+                <div className="flex flex-col text-sm max-h-[10rem] overflow-auto">
                     {authors.map((author: any) => (
-                        <div className="flex flex-row gap-2">
+                        <div className="flex flex-row gap-2" key={author.id}>
                             <input
                                 type="checkbox"
                                 author-name={author.name}

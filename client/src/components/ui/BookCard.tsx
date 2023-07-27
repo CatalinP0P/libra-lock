@@ -38,7 +38,7 @@ export default function BookCard({
     return (
         <div
             className={
-                'flex flex-col transition-all relative w-full cursor-pointer items-start rounded-md text-start shadow-2xl ' +
+                'flex flex-col transition-all relative w-full items-start rounded-md text-start shadow-2xl ' +
                 (theme == 'dark'
                     ? ' bg-darkMode-800 text-white'
                     : 'bg-white text-primary')
@@ -47,7 +47,7 @@ export default function BookCard({
             <BookImage
                 imageURL={imageURL}
                 hoverEffect
-                classID="cursor-pointer"
+                className='cursor-pointer'
                 onClick={() => navigate('/' + id)}
             />
             <div className="flex flex-col gap-1 px-4 pb-4 w-full">
