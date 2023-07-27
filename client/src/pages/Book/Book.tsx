@@ -172,7 +172,10 @@ export default function Book(props: any) {
                                     onClick={() => navigate('/' + book.id)}
                                     className=" cursor-pointer shadow-2xl"
                                 >
-                                    <BookImage imageURL={book.imageURL} />
+                                    <BookImage
+                                        imageURL={book.imageURL}
+                                        hoverEffect
+                                    />
                                 </div>
                             );
                         })}

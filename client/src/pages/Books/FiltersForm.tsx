@@ -11,6 +11,8 @@ import Button from '../../components/ui/Button';
 import { useTheme } from '../../context/ThemeContext';
 import { useSearchParams } from 'react-router-dom';
 import { StringMappingType } from 'typescript';
+import { useAuth } from '../../context/AuthContext';
+import { useAuthors } from '../../hooks/useAuthors';
 
 interface FilterProps {
     q: string;
@@ -25,6 +27,7 @@ interface FilterProps {
 
 export default function FiltersForm() {
     const [searchParams, setSearchParams] = useSearchParams();
+    const { authors } = useAuthors();
 
     const [filterData, setFilterData] = useState<FilterProps>({
         q: searchParams.get('q') || '',
@@ -145,32 +148,20 @@ export default function FiltersForm() {
             <div className="col-span-2 p-4 border-b border-neutral-500 flex flex-col">
                 <label className="opacity-60">Authors</label>
                 <div className="flex flex-col text-sm">
-                    <div className="flex flex-row gap-2">
-                        <input
-                            id="ion"
-                            type="checkbox"
-                            author-name="Ion Creanga"
-                            name="authors"
-                            defaultChecked={filterData.authors.includes(
-                                'Ion Creanga'
-                            )}
-                            onChange={handleChange}
-                        />
-                        <label>Ion Creanga</label>
-                    </div>
-                    <div className="flex flex-row gap-2">
-                        <input
-                            type="checkbox"
-                            author-name="Popa Liviu"
-                            name="authors"
-                            defaultChecked={filterData.authors.includes(
-                                'Popa Liviu'
-                            )}
-                            onChange={handleChange}
-                        />
-
-                        <label>Popa Liviu</label>
-                    </div>
+                    {authors.map((author: any) => (
+                        <div className="flex flex-row gap-2">
+                            <input
+                                type="checkbox"
+                                author-name={author.name}
+                                name="authors"
+                                defaultChecked={filterData.authors.includes(
+                                    author.name
+                                )}
+                                onChange={handleChange}
+                            />
+                            <label>{author.name}</label>
+                        </div>
+                    ))}
                 </div>
             </div>
             <div className="col-span-2 p-4 border-b border-neutral-500 flex flex-col">

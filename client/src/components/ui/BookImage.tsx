@@ -2,24 +2,37 @@ import React, { HTMLAttributes } from 'react';
 import { useTheme } from '../../context/ThemeContext';
 
 interface BookImageProps extends React.HTMLProps<HTMLDivElement> {
+    hoverEffect?: boolean;
     imageURL: string;
 }
 
 export default function BookImage({
     imageURL,
     className,
+    hoverEffect = false,
     ...props
 }: BookImageProps) {
     const { theme } = useTheme();
 
     return (
-        <div className={'relative h-[100%] w-full ' + className} {...props}>
+        <div
+            className={
+                'group relative h-[100%] overflow-hidden w-full ' + className
+            }
+            {...props}
+        >
             <img
-                className="relative w-[60%] h-[100%] mx-auto z-[10] pointer-events-none"
+                className={
+                    'relative w-[60%] h-[100%] mx-auto z-[10] pointer-events-none ' +
+                    (hoverEffect ? 'transition-all group-hover:scale-105' : '')
+                }
                 src={imageURL}
             />
             <img
-                className="absolute left-0 top-0 w-full h-full z-[1] object-cover pointer-events-none"
+                className={
+                    'absolute left-0 top-0 w-full h-full z-[1] object-cover pointer-events-none ' +
+                    (hoverEffect ? 'transition-all group-hover:scale-105' : '')
+                }
                 src={imageURL}
             />
             <div
