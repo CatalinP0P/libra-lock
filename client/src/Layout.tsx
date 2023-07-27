@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
+import RentModal from './components/ui/RentModal';
 
 export default function Layout({ children }: { children?: React.ReactNode }) {
     useEffect(() => {
