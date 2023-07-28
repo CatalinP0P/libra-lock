@@ -27,7 +27,7 @@ export const useBooks = () => {
                     title: 'Atomic Habits',
                     imageURL: book1image,
                     author: 'James Clear',
-                    category: 'Self Development',
+                    genre: 'Self Development',
                     pages: 218,
                     description:
                         "Atomic Habits is the most comprehensive and practical guide on how to create good habits, break bad ones, and get 1 percent better every day. I do not believe you will find a more actionable book on the subject of habits and improvement. If you're having trouble changing your habits, the problem isn't you",
@@ -39,7 +39,7 @@ export const useBooks = () => {
                     title: 'Cant Hurt Me',
                     imageURL: book2image,
                     author: 'David Goggins',
-                    category: 'Self Development',
+                    genre: 'Self Development',
                     pages: 294,
                     description:
                         "David Goggins is a being of pure will and inspiration. Just listening to this guy talk makes you want to run up a mountain. I firmly believe people like him can change the course of the world just by inspiring us to push harder and dig deeper in everything we do. His goal to be 'uncommon amongst uncommon people' is something we can all use to propel ourselves to fulfill our true potential. I'm a better man having met him.",

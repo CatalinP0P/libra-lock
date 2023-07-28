@@ -168,7 +168,7 @@ export default function FiltersForm() {
             <FormInputFluid
                 title="Min Price"
                 defaultValue={filterData.minPrice || ''}
-                placeholder="Minimum Price"
+                placeholder="ex: 100"
                 name="minPrice"
                 onChange={handleChange}
                 type="number"
@@ -176,7 +176,7 @@ export default function FiltersForm() {
             />
             <FormInputFluid
                 title="Max Price"
-                placeholder="Maximum Price"
+                placeholder="ex: 410"
                 name="maxPrice"
                 onChange={handleChange}
                 type="number"
