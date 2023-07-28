@@ -12,7 +12,7 @@ export default function Modal({ children, visible, setVisible }: ModalProps) {
         <>
             <div
                 className={
-                    'fixed z-[100] left-[50%] top-[50%] bg-white translate-x-[-50%]  max-h-[75vh] overflow-y-auto transition-all text-neutral-800 ' +
+                    'fixed z-[100] left-[50%] top-[50%] bg-white translate-x-[-50%] max-w-[90vw] overflow-x-hidden max-h-[75vh] overflow-y-auto transition-all text-neutral-800 ' +
                     (visible
                         ? ' opacity-100 translate-y-[-50%]'
                         : ' opacity-0 translate-y-[-100%] pointer-events-none')
