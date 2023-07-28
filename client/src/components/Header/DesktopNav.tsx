@@ -11,12 +11,11 @@ export default function DesktopNav() {
 
     return (
         <>
-            <div className="hidden lg:flex flex-row gap-6 w-full items-center">
+            <div className="hidden lg:flex flex-row gap-6 w-full items-center justify-end">
                 <SearchBar />
                 <div>
                     <ThemeSlider />
                 </div>
-
                 <AccountButton />
             </div>
         </>
