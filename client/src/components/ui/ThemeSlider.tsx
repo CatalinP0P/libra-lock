@@ -14,6 +14,7 @@ export default function ThemeSlider() {
             onChange={() => {
                 toggleTheme();
             }}
+            size='large'
             SvgOFF={SunWhite}
             SvgON={MoonSecondary}
         />

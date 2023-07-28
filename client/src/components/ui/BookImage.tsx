@@ -16,7 +16,9 @@ export default function BookImage({
 
     return (
         <div
-            className={'group relative h-full overflow-hidden w-full ' + className}
+            className={
+                'group relative h-full overflow-hidden w-full ' + className
+            }
             {...props}
         >
             <img
@@ -24,6 +26,7 @@ export default function BookImage({
                     'relative w-[60%] h-[100%] mx-auto z-[10] pointer-events-none ' +
                     (hoverEffect ? 'transition-all group-hover:scale-105' : '')
                 }
+                loading="lazy"
                 src={imageURL}
             />
             <img

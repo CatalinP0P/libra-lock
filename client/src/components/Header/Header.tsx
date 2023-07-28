@@ -10,11 +10,11 @@ import AccountButton from './AccountButton';
 import SearchIcon from '@mui/icons-material/Search';
 import ClearIcon from '@mui/icons-material/Clear';
 import DesktopNav from './DesktopNav';
-
 import MobileNav from './MobileNav';
 
 export default function Header() {
     const { theme } = useTheme();
+    const navigate = useNavigate();
     return (
         <div
             className={
@@ -25,8 +25,22 @@ export default function Header() {
             }
         >
             <Container className="flex flex-row justify-between py-2 items-center gap-32">
-                <div className="w-full">
+                <div className="w-full flex flex-row items-center gap-16">
                     <Logo className="z-[10]" />
+                    <div className="flex flex-row items-center gap-8">
+                        <label
+                            className="font-semibold opacity-60 hover:opacity-100 cursor-pointer text-lg"
+                            onClick={() => navigate('/books')}
+                        >
+                            Browse Books
+                        </label>
+                        <label
+                            className="font-semibold opacity-60 hover:opacity-100 cursor-pointer text-lg"
+                            onClick={() => navigate('/buycoins')}
+                        >
+                            Buy Credits
+                        </label>
+                    </div>
                 </div>
                 <DesktopNav />
                 <MobileNav />
