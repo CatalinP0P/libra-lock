@@ -34,7 +34,7 @@ export default function RentModal({ id, visible, setVisible }: ModalProps) {
         <Modal
             visible={visible}
             setVisible={setVisible}
-            className="w-[90%] max-w-[64rem]"
+            className="w-[90%] max-w-[40rem]"
         >
             {modalStep == 1 && (
                 <div className="flex flex-col gap-2 pt-8 items-center h-full justify-between">
@@ -44,7 +44,7 @@ export default function RentModal({ id, visible, setVisible }: ModalProps) {
                     <div className="flex flex-col gap-1">
                         <BookImage
                             imageURL={selectedBook?.imageURL}
-                            className="w-[80vw] max-w-[32rem]"
+                            className="w-[90%] mx-auto max-w-[32rem]"
                         />
                         <label className="text-2xl text-neutral-800 font-semibold">
                             {selectedBook?.title}

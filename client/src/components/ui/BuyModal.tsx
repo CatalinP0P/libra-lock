@@ -34,7 +34,7 @@ export default function BuyModal({ id, visible, setVisible }: ModalProps) {
         <Modal
             visible={visible}
             setVisible={setVisible}
-            className="w-[90%] max-w-[64rem]"
+            className="w-[90%] max-w-[40rem]"
         >
             {modalStep == 1 && (
                 <div className="flex flex-col gap-2 pt-8 items-center h-full justify-between">
