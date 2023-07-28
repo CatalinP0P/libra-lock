@@ -34,13 +34,14 @@ export default function BuyModal({ id, visible, setVisible }: ModalProps) {
         <Modal visible={visible} setVisible={setVisible}>
             {modalStep == 1 && (
                 <div className="flex flex-col gap-2 pt-8">
-                    <label className="text-4xl font-semibold text-neutral-800 px-24 mx-auto pb-4">
-                        Buy a book for {selectedBook?.price}
+                    <label className="text-4xl font-semibold text-neutral-800 px-4 md:px-24 mx-auto pb-4">
+                        Buy this book {selectedBook?.price}
                     </label>
-                    <div className="flex flex-col gap-1 px-24">
-                        <div className="relative w-[24rem] shadow-lg">
-                            <BookImage imageURL={selectedBook?.imageURL} />
-                        </div>
+                    <div className="flex flex-col gap-1 px-4 md:px-24">
+                        <BookImage
+                            imageURL={selectedBook?.imageURL}
+                            className="w-[80vw] max-w-[32rem]"
+                        />
                         <label className="text-2xl text-neutral-800 font-semibold">
                             {selectedBook?.title}
                         </label>
@@ -73,24 +74,11 @@ export default function BuyModal({ id, visible, setVisible }: ModalProps) {
             )}
 
             {modalStep == 2 && (
-                <div className="flex flex-col gap-2 pt-8 text-start">
-                    {loading && (
-                        <div className="absolute left-0 top-0 bottom-0 right-0 flex flex-col items-center justify-center bg-black/75 z-[110]">
-                            <label className="z-[114] text-3xl font-medium text-white flex flex-row gap-4 items-center">
-                                <LoadingSVG
-                                    width={32}
-                                    height={32}
-                                    fill="#FFFFFF"
-                                    className="animate-spin"
-                                />
-                                Loading
-                            </label>
-                        </div>
-                    )}
-                    <label className="text-4xl font-semibold text-neutral-800 px-24 pb-4">
+                <div className="flex flex-col gap-2 pt-8 text-start relative">
+                    <label className="text-4xl font-semibold text-neutral-800 px-16 md:px-24 pb-4">
                         Checkout
                     </label>
-                    <div className="flex flex-col gap-1 px-24 items-start pt-8">
+                    <div className="flex flex-col gap-1 px-4 md:px-24 items-start pt-8">
                         <FormSelect
                             title="Select collection point"
                             options={[
@@ -120,15 +108,28 @@ export default function BuyModal({ id, visible, setVisible }: ModalProps) {
                                 }, 1750);
                             }}
                         >
-                            Buy Book
+                            Rent Book
                         </Button>
                     </div>
+                    {loading && (
+                        <div className="absolute left-0 top-0 bottom-0 right-0 flex flex-col items-center justify-center bg-black/75 z-[110]">
+                            <label className="z-[114] text-3xl font-medium text-white flex flex-row gap-4 items-center">
+                                <LoadingSVG
+                                    width={32}
+                                    height={32}
+                                    fill="#FFFFFF"
+                                    className="animate-spin"
+                                />
+                                Loading
+                            </label>
+                        </div>
+                    )}
                 </div>
             )}
 
             {modalStep == 3 && (
                 <div className="flex flex-col gap-2 pt-8 text-start">
-                    <label className="text-4xl font-semibold text-neutral-800 px-24 pb-4">
+                    <label className="text-4xl font-semibold text-neutral-800 px-16 md:px-24 pb-4">
                         Book buyed successfully
                     </label>
                     <label className="flex flex-col items-center justify-center text-4xl">

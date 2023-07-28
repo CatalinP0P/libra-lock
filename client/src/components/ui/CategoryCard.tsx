@@ -19,7 +19,7 @@ export default function CategoryCard({ name, className, ...props }: CardProps) {
             }
             {...props}
         >
-            <label className="group-hover:scale-110 transition-all block text-center font-semibold text-2xl group-hover:opacity-80">
+            <label className="group-hover:scale-110 transition-all block text-center font-semibold text-lg md:text-2xl group-hover:opacity-80">
                 {name}
             </label>
         </div>

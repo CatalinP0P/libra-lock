@@ -34,13 +34,14 @@ export default function RentModal({ id, visible, setVisible }: ModalProps) {
         <Modal visible={visible} setVisible={setVisible}>
             {modalStep == 1 && (
                 <div className="flex flex-col gap-2 pt-8">
-                    <label className="text-4xl font-semibold text-neutral-800 px-24 mx-auto pb-4">
-                        Rent a book for {selectedBook?.price / 5}
+                    <label className="text-4xl font-semibold text-neutral-800 px-4 md:px-24 mx-auto pb-4">
+                        Rent this book {selectedBook?.price / 5}
                     </label>
-                    <div className="flex flex-col gap-1 px-24">
-                        <div className="relative w-[24rem] shadow-lg">
-                            <BookImage imageURL={selectedBook?.imageURL} />
-                        </div>
+                    <div className="flex flex-col gap-1 px-4 md:px-24">
+                        <BookImage
+                            imageURL={selectedBook?.imageURL}
+                            className="w-[80vw] max-w-[32rem]"
+                        />
                         <label className="text-2xl text-neutral-800 font-semibold">
                             {selectedBook?.title}
                         </label>
@@ -74,10 +75,10 @@ export default function RentModal({ id, visible, setVisible }: ModalProps) {
 
             {modalStep == 2 && (
                 <div className="flex flex-col gap-2 pt-8 text-start relative">
-                    <label className="text-4xl font-semibold text-neutral-800 px-24 pb-4">
+                    <label className="text-4xl font-semibold text-neutral-800 px-16 md:px-24 pb-4">
                         Checkout
                     </label>
-                    <div className="flex flex-col gap-1 px-24 items-start pt-8">
+                    <div className="flex flex-col gap-1 px-4 md:px-24 items-start pt-8">
                         <FormSelect
                             title="Select collection point"
                             options={[
@@ -128,7 +129,7 @@ export default function RentModal({ id, visible, setVisible }: ModalProps) {
 
             {modalStep == 3 && (
                 <div className="flex flex-col gap-2 pt-8 text-start">
-                    <label className="text-4xl font-semibold text-neutral-800 px-24 pb-4">
+                    <label className="text-4xl font-semibold text-neutral-800 px-16 md:px-24 pb-4">
                         Book rented successfully
                     </label>
                     <label className="flex flex-col items-center justify-center text-4xl">

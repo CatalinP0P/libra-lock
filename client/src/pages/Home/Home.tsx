@@ -63,7 +63,7 @@ export default function Home() {
                     <h2 className="text-3xl transition-all md:text-4xl text-start font-extrabold block z-[5]">
                         Trending Writers
                     </h2>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 w-full gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 w-full gap-8 sm:gap-6 md:gap-4">
                         {authors.map((author: any) => (
                             <PersonCard
                                 onClick={() =>
@@ -80,7 +80,7 @@ export default function Home() {
                     <h2 className="text-3xl transition-all md:text-4xl text-start font-extrabold block z-[5]">
                         Explore by Genre
                     </h2>
-                    <div className="grid md:grid-cols-3 grid-cols-2 gap-4 w-full">
+                    <div className="grid md:grid-cols-3 grid-cols-2 gap-8 sm:gap-6 md:gap-4 w-full">
                         {genres.map((genre: any) => (
                             <CategoryCard
                                 onClick={() =>
@@ -96,7 +96,7 @@ export default function Home() {
                     <h2 className="text-3xl transition-all md:text-4xl text-start font-extrabold block z-[5]">
                         Recommended Books
                     </h2>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 w-full gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 w-full gap-8 sm:gap-6 md:gap-4">
                         {books.map((book) => {
                             return (
                                 <BookCard
