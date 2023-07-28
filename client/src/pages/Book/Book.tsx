@@ -169,7 +169,7 @@ export default function Book(props: any) {
                         {books.map((book) => {
                             return (
                                 <div
-                                    onClick={() => navigate('/' + book.id)}
+                                    onClick={() => navigate('/book/' + book.id)}
                                     className=" cursor-pointer shadow-2xl"
                                 >
                                     <BookImage

@@ -7,6 +7,7 @@ import SignIn from './pages/Auth/SignIn';
 import Book from './pages/Book/Book';
 import SignUp from './pages/Auth/SignUp';
 import './index.css';
+import NotFound from './pages/Error/NotFound';
 import { AuthProvider } from './context/AuthContext';
 import { PopupProvider } from './context/PopupContext';
 import BuyCoins from './pages/BuyCoins/BuyCoins';
@@ -20,17 +21,12 @@ function App() {
                     <BrowserRouter>
                         <Routes>
                             <Route path="/" element={<Home />} />
-                            <Route
-                                path="*"
-                                element={
-                                    <label>Error 404: Page not found</label>
-                                }
-                            />
                             <Route path="/signin" element={<SignIn />} />
                             <Route path="/signup" element={<SignUp />} />
                             <Route path="/buycoins" element={<BuyCoins />} />
                             <Route path="/books" element={<Books />} />
-                            <Route path="/:id" element={<Book />} />
+                            <Route path="/book/:id" element={<Book />} />
+                            <Route path="/*" element={<NotFound />} />
                         </Routes>
                     </BrowserRouter>
                 </PopupProvider>
