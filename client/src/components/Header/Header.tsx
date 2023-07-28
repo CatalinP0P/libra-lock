@@ -18,14 +18,16 @@ export default function Header() {
     return (
         <div
             className={
-                'absolute top-0 left-0 right-0 border-b-2 border-secondary/10 z-[2] md:bg-transparent ' +
+                'absolute top-0 left-0 right-0 z-[100] border-b-2 border-secondary/10 lg:bg-transparent ' +
                 (theme == 'dark'
                     ? ' bg-darkMode-800 text-white'
                     : 'bg-white text-primary')
             }
         >
-            <Container className="flex flex-row justify-between py-2 items-center">
-                <Logo className='z-[10]' />
+            <Container className="flex flex-row justify-between py-2 items-center gap-32">
+                <div className="w-full">
+                    <Logo className="z-[10]" />
+                </div>
                 <DesktopNav />
                 <MobileNav />
             </Container>

@@ -12,21 +12,33 @@ export default function DesktopNav() {
     const navigate = useNavigate();
 
     return (
-        <div className="hidden md:flex flex-row gap-4 items-center min-w-[200px] ">
-            <SearchBar />
-            <ThemeSlider />
-            <label
-                className="flex flex-row items-center text-xl gap-2 cursor-pointer"
-                onClick={() => navigate('/buycoins')}
-            >
-                540
-                <CoinSVG
-                    height={24}
-                    width={24}
-                    fill={theme == 'dark' ? colors.white : colors.primary}
-                />
-            </label>
-            <AccountButton />
-        </div>
+        <>
+            <div className="hidden lg:flex w-full flex-row gap-2">
+                <label
+                    className="font-bold opacity-60 hover:opacity-100 cursor-pointer text-lg"
+                    onClick={() => navigate('/books')}
+                >
+                    Browse Books
+                </label>
+            </div>
+            <div className="hidden lg:flex flex-row gap-4 w-full items-center">
+                <SearchBar />
+                <div>
+                    <ThemeSlider />
+                </div>
+                <label
+                    className="flex flex-row items-center text-xl gap-2 cursor-pointer"
+                    onClick={() => navigate('/buycoins')}
+                >
+                    540
+                    <CoinSVG
+                        height={24}
+                        width={24}
+                        fill={theme == 'dark' ? colors.white : colors.primary}
+                    />
+                </label>
+                <AccountButton />
+            </div>
+        </>
     );
 }

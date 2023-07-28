@@ -33,6 +33,17 @@ export default function Books() {
         // });
         const authors = searchParams.getAll('authors');
         var newBooks = books;
+        if (searchParams.get('q'))
+            newBooks = newBooks.filter(
+                (book) =>
+                    book.title
+                        .toLowerCase()
+                        .includes(searchParams.get('q')?.toLowerCase()) ||
+                    book.author
+                        .toLowerCase()
+                        .includes(searchParams.get('q')?.toLowerCase())
+            );
+
         if (authors.length)
             newBooks = books.filter((book) => authors.includes(book.author));
 
@@ -93,7 +104,7 @@ export default function Books() {
 
     return (
         <Layout>
-            <Container className="flex flex-col lg:flex-row mt-24 gap-8">
+            <Container className="flex flex-col lg:flex-row mt-24 gap-8 z-[2]">
                 <div className="flex flex-col w-full flex-1 ">
                     <div
                         className={
@@ -134,8 +145,8 @@ export default function Books() {
                         <FiltersForm />
                     </div>
                 </div>
-                <div className="w-full flex flex-col gap-1">
-                    <label className="text-2xl md:text-4xl font-semibold px-2 opacity-80">
+                <div className="w-full flex flex-col gap-8">
+                    <label className="text-4xl md:text-5xl font-semibold px-2 opacity-80">
                         Results for your search: {filteredBooks.length}
                     </label>
                     <div className="grid grid-cols-2 md:grid-cols-3 gap-4 p-2 w-full h-fit">

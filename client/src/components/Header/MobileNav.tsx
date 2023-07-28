@@ -18,7 +18,7 @@ export default function MobileNav() {
     const navigate = useNavigate();
 
     return (
-        <div className={'md:hidden'}>
+        <div className={'lg:hidden'}>
             {!visible ? (
                 <div onClick={() => setVisible(true)}>
                     <MenuRoundedIcon />
@@ -30,7 +30,7 @@ export default function MobileNav() {
             )}
             <div
                 className={
-                    'absolute left-0 shadow-lg right-0 transition-all top-14 flex flex-col w-full ' +
+                    'absolute left-0 shadow-lg right-0 transition-all top-14 md:top-20 flex flex-col w-full ' +
                     (theme == 'dark'
                         ? ' bg-darkMode-800 text-white'
                         : 'bg-white text-primary') +

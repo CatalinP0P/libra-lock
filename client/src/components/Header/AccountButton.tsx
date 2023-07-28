@@ -71,8 +71,8 @@ export default function AccountButton() {
                 <PersonSVG
                     className="cursor-pointer"
                     onClick={() => navigate('/signin')}
-                    width={24}
-                    height={24}
+                    width={40}
+                    height={40}
                     fill={theme == 'light' ? colors.primary : colors.secondary}
                 />
             )}

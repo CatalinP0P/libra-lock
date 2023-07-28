@@ -8,10 +8,10 @@ export default function SearchBar() {
     const navigate = useNavigate();
 
     return (
-        <div className="flex flex-row gap-2 bg-transparent text-secondary/75 p-2 rounded-full border-2 border-secondary/75 items-top ">
+        <div className="flex min-w-[15rem] flex-row gap-2 bg-transparent text-secondary/75 p-2 rounded-full border-2 border-secondary/75 items-top ">
             <div
                 className=" cursor-pointer z-[10]"
-                onClick={() => navigate('/books?q=' + search)}
+                onClick={() => navigate('/books?q=' + search.trim())}
             >
                 <SearchIcon className="w-[24px] h-[24px]" />
             </div>
@@ -20,6 +20,12 @@ export default function SearchBar() {
                 value={search}
                 onChange={(e) => {
                     setSearch(e.target.value);
+                }}
+                onKeyDown={(e) => {
+                    if (e.key == 'Enter') {
+                        if (search.trim())
+                            navigate('/books?q=' + search.trim());
+                    }
                 }}
             />
             <div
