@@ -48,7 +48,7 @@ export default function BookCard({
                 imageURL={imageURL}
                 hoverEffect
                 className='cursor-pointer'
-                onClick={() => navigate('/' + id)}
+                onClick={() => navigate('/book/' + id)}
             />
             <div className="flex flex-col gap-1 px-4 pb-4 w-full">
                 <label className="font-bold text-lg pt-4 ms-1">{title}</label>
