@@ -22,7 +22,7 @@ export default function AccountButton() {
                                 if (setAccountDropdown)
                                     setAccountDropdown(!accountDropdown);
                             }}
-                            className="w-[40px] h-[40px] rounded-full cursor-pointer"
+                            className="min-w-[40px] h-[40px] rounded-full cursor-pointer"
                             src={user?.photoURL as string}
                         />
                     ) : (
