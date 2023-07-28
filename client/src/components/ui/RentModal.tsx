@@ -34,7 +34,7 @@ export default function RentModal({ id, visible, setVisible }: ModalProps) {
         <Modal
             visible={visible}
             setVisible={setVisible}
-            className="w-[90%] max-w-[64rem] h-[50%]"
+            className="w-[90%] max-w-[64rem]"
         >
             {modalStep == 1 && (
                 <div className="flex flex-col gap-2 pt-8 items-center h-full justify-between">
@@ -78,7 +78,7 @@ export default function RentModal({ id, visible, setVisible }: ModalProps) {
             )}
 
             {modalStep == 2 && (
-                <div className="flex flex-col gap-2 pt-8 text-start relative items-center h-full justify-between">
+                <div className="flex flex-col gap-2 pt-8 text-start relative items-center justify-between">
                     <div className="flex flex-col gap-4">
                         <label className="text-4xl font-semibold text-neutral-800 pb-4">
                             Checkout
@@ -134,9 +134,9 @@ export default function RentModal({ id, visible, setVisible }: ModalProps) {
             )}
 
             {modalStep == 3 && (
-                <div className="flex flex-col gap-2 pt-8 text-start items-center h-full justify-between">
-                    <div className="flex flex-col gap-4">
-                        <label className="text-4xl font-semibold text-neutral-800 pb-4">
+                <div className="flex flex-col gap-2 pt-8 text-center items-center h-full justify-between">
+                    <div className="flex flex-col gap-4 w-full">
+                        <label className="text-2xl md:text-4xl mx-auto font-semibold text-neutral-800 pb-4">
                             Book rented successfully
                         </label>
                         <label className="flex flex-col items-center justify-center text-4xl">
