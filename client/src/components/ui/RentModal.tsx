@@ -5,6 +5,7 @@ import BookImage from './BookImage';
 import Button from './Button';
 import FormSelectFluid from './forms/FormSelectFluid';
 import FormSelect from './forms/FormSelect';
+import { ReactComponent as LoadingSVG } from '../../assets/svgs/loading.svg';
 
 interface ModalProps {
     id: string;
@@ -16,6 +17,7 @@ export default function RentModal({ id, visible, setVisible }: ModalProps) {
     const { books } = useBooks();
     const [selectedBook, setSelectedBook] = useState<any>();
     const [modalStep, setModalStep] = useState(1);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         const book = books.filter((m) => m.id == id)[0];
@@ -71,7 +73,7 @@ export default function RentModal({ id, visible, setVisible }: ModalProps) {
             )}
 
             {modalStep == 2 && (
-                <div className="flex flex-col gap-2 pt-8 text-start">
+                <div className="flex flex-col gap-2 pt-8 text-start relative">
                     <label className="text-4xl font-semibold text-neutral-800 px-24 pb-4">
                         Checkout
                     </label>
@@ -97,11 +99,30 @@ export default function RentModal({ id, visible, setVisible }: ModalProps) {
                             variant="primary"
                             rounded={false}
                             className="w-full"
-                            onClick={() => setModalStep(3)}
+                            onClick={() => {
+                                setLoading(true);
+                                setTimeout(() => {
+                                    setLoading(false);
+                                    setModalStep(modalStep + 1);
+                                }, 1750);
+                            }}
                         >
                             Rent Book
                         </Button>
                     </div>
+                    {loading && (
+                        <div className="absolute left-0 top-0 bottom-0 right-0 flex flex-col items-center justify-center bg-black/75 z-[110]">
+                            <label className="z-[114] text-3xl font-medium text-white flex flex-row gap-4 items-center">
+                                <LoadingSVG
+                                    width={32}
+                                    height={32}
+                                    fill="#FFFFFF"
+                                    className="animate-spin"
+                                />
+                                Loading
+                            </label>
+                        </div>
+                    )}
                 </div>
             )}
 
