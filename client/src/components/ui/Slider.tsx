@@ -3,27 +3,39 @@ import React, { ReactComponentElement } from 'react';
 export default function Slider({
     checked,
     onChange,
+    size = 'medium',
     SvgOFF,
     SvgON,
 }: {
     checked: boolean;
     onChange: any;
+    size?: 'small' | 'medium' | 'large';
     SvgOFF?: React.FunctionComponent<any>;
     SvgON?: React.FunctionComponent<any>;
 }) {
     return (
         <div
             className={
-                'cursor-pointer transition-all p-1 w-[40px] rounded-full flex-row ' +
+                (size == 'small'
+                    ? 'text-sm'
+                    : size == 'medium'
+                    ? 'text-base'
+                    : 'text-lg') +
+                ' cursor-pointer transition-all p-1 w-[3.25em] rounded-full flex-row ' +
                 (checked ? 'bg-secondary/50' : 'bg-primary/90 dark:bg-white/90')
             }
             onClick={onChange}
         >
             <div
                 className={
-                    'w-[15px] relative h-[15px] transition-all items-center justify-center rounded-full ' +
+                    'w-[1.5em] relative h-[1.5em] transition-all items-center justify-center rounded-full ' +
                     (checked
-                        ? ' translate-x-[17px] bg-secondary'
+                        ? ' bg-secondary ' +
+                          (size == 'small'
+                              ? 'translate-x-[1.25em]'
+                              : size == 'medium'
+                              ? 'translate-x-[1.3em]'
+                              : 'translate-x-[1.35em]')
                         : ' bg-secondary/75')
                 }
             >

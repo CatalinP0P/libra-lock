@@ -18,7 +18,7 @@ import { useGenres } from '../../hooks/useGenres';
 import CategoryCard from '../../components/ui/CategoryCard';
 
 export default function Home() {
-    const { loading, user } = useAuth();
+    const { user } = useAuth();
 
     const { books } = useBooks();
     const { authors } = useAuthors();
@@ -43,9 +43,7 @@ export default function Home() {
         setBuyModalVisibility(true);
     };
 
-    return loading ? (
-        <Layout></Layout>
-    ) : (
+    return (
         <Layout>
             <RentModal
                 visible={rentModalVisibility}

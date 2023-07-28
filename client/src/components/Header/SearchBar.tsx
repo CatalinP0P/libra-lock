@@ -8,7 +8,7 @@ export default function SearchBar() {
     const navigate = useNavigate();
 
     return (
-        <div className="flex min-w-[15rem] flex-row gap-2 bg-transparent text-secondary/75 p-2 rounded-full border-2 border-secondary/75 items-top ">
+        <div className="flex min-w-[15rem] flex-row gap-2 bg-transparent text-secondary/75 px-2 py-1 rounded-full border-2 border-secondary/75 items-top ">
             <div
                 className=" cursor-pointer z-[10]"
                 onClick={() => navigate('/books?q=' + search.trim())}
