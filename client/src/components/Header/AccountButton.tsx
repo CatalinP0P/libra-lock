@@ -1,9 +1,6 @@
 import React from 'react';
-
 import { ReactComponent as PersonSVG } from '../../assets/svgs/PersonFill.svg';
-import personSVG from '../../assets/svgs/PersonFill.svg';
 import * as colors from '../../static/colors';
-
 import { useAuth } from '../../context/AuthContext';
 import { usePopup } from '../../context/PopupContext';
 import { useTheme } from '../../context/ThemeContext';

@@ -14,7 +14,9 @@ export default function Layout({ children }: { children?: React.ReactNode }) {
     return (
         <div className="flex flex-col min-h-screen bg-white dark:bg-darkMode text-primary dark:text-white overflow-x-hidden">
             <Header />
-            <div className="flex-1 flex flex-col relative">{children}</div>
+            <div className="flex-1 flex flex-col relative">
+                {children}
+            </div>
             <Footer />
         </div>
     );
