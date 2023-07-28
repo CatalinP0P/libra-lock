@@ -44,7 +44,7 @@ export default function BuyModal({ id, visible, setVisible }: ModalProps) {
                     <div className="flex flex-col gap-1">
                         <BookImage
                             imageURL={selectedBook?.imageURL}
-                            className="w-[80vw] max-w-[32rem]"
+                            className="w-[90%] mx-auto max-w-[32rem]"
                         />
                         <label className="text-2xl text-neutral-800 font-semibold">
                             {selectedBook?.title}
