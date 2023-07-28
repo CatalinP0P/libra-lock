@@ -31,13 +31,17 @@ export default function BuyModal({ id, visible, setVisible }: ModalProps) {
     }, [visible]);
 
     return (
-        <Modal visible={visible} setVisible={setVisible}>
+        <Modal
+            visible={visible}
+            setVisible={setVisible}
+            className="w-[90%] max-w-[64rem] h-[50%]"
+        >
             {modalStep == 1 && (
-                <div className="flex flex-col gap-2 pt-8">
-                    <label className="text-4xl font-semibold text-neutral-800 px-4 md:px-24 mx-auto pb-4">
+                <div className="flex flex-col gap-2 pt-8 items-center h-full justify-between">
+                    <label className="text-4xl font-semibold text-neutral-800 mx-auto pb-4">
                         Buy this book {selectedBook?.price}
                     </label>
-                    <div className="flex flex-col gap-1 px-4 md:px-24">
+                    <div className="flex flex-col gap-1">
                         <BookImage
                             imageURL={selectedBook?.imageURL}
                             className="w-[80vw] max-w-[32rem]"
@@ -74,18 +78,20 @@ export default function BuyModal({ id, visible, setVisible }: ModalProps) {
             )}
 
             {modalStep == 2 && (
-                <div className="flex flex-col gap-2 pt-8 text-start relative">
-                    <label className="text-4xl font-semibold text-neutral-800 px-16 md:px-24 pb-4">
-                        Checkout
-                    </label>
-                    <div className="flex flex-col gap-1 px-4 md:px-24 items-start pt-8">
-                        <FormSelect
-                            title="Select collection point"
-                            options={[
-                                'Cluj Napoca, Iuliu Hateg',
-                                'Timisoara, Unirii',
-                            ]}
-                        />
+                <div className="flex flex-col gap-2 pt-8 text-start relative items-center h-full justify-between">
+                    <div className="flex flex-col gap-4">
+                        <label className="text-4xl font-semibold text-neutral-800 pb-4">
+                            Checkout
+                        </label>
+                        <div className="flex flex-col gap-1 items-start pt-8 w-[90%]">
+                            <FormSelect
+                                title="Select collection point"
+                                options={[
+                                    'Cluj Napoca, Iuliu Hateg',
+                                    'Timisoara, Unirii',
+                                ]}
+                            />
+                        </div>
                     </div>
                     <div className="w-full flex flex-row pt-16">
                         <Button
@@ -108,7 +114,7 @@ export default function BuyModal({ id, visible, setVisible }: ModalProps) {
                                 }, 1750);
                             }}
                         >
-                            Rent Book
+                            Buy Book
                         </Button>
                     </div>
                     {loading && (
@@ -128,16 +134,18 @@ export default function BuyModal({ id, visible, setVisible }: ModalProps) {
             )}
 
             {modalStep == 3 && (
-                <div className="flex flex-col gap-2 pt-8 text-start">
-                    <label className="text-4xl font-semibold text-neutral-800 px-16 md:px-24 pb-4">
-                        Book buyed successfully
-                    </label>
-                    <label className="flex flex-col items-center justify-center text-4xl">
-                        <label className="text-sm font-semibold text-neutral-400">
-                            Here is your book code
+                <div className="flex flex-col gap-2 pt-8 text-start items-center h-full justify-between">
+                    <div className="flex flex-col gap-4">
+                        <label className="text-4xl font-semibold text-neutral-800 pb-4">
+                            Book buyed successfully
                         </label>
-                        13573
-                    </label>
+                        <label className="flex flex-col items-center justify-center text-4xl">
+                            <label className="text-sm font-semibold text-neutral-400">
+                                Here is your book code
+                            </label>
+                            13573
+                        </label>
+                    </div>
                     <div className="w-full flex flex-row pt-16">
                         <Button
                             variant={'secondary'}
