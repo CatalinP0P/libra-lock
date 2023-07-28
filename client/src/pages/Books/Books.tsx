@@ -5,6 +5,9 @@ import React, {
     useState,
 } from 'react';
 
+import RentModal from '../../components/ui/RentModal';
+import BuyModal from '../../components/ui/BuyModal';
+
 import { useSearchParams } from 'react-router-dom';
 import { useTheme } from '../../context/ThemeContext';
 import { FormEvent } from 'react';
@@ -25,6 +28,22 @@ export default function Books() {
     const { theme } = useTheme();
     const { books, loading } = useBooks();
     const [filteredBooks, setFitleredBooks] = useState<any>([]);
+
+    const [bookId, setBookId] = useState<string>('');
+    const [rentModalVisibility, setRentModalVisibility] =
+        useState<boolean>(false);
+    const [buyModalVisibility, setBuyModalVisibility] =
+        useState<boolean>(false);
+
+    const rentBook = (id: string) => {
+        setBookId(id);
+        setRentModalVisibility(true);
+    };
+
+    const buyBook = (id: string) => {
+        setBookId(id);
+        setBuyModalVisibility(true);
+    };
 
     const fetchBooks = async () => {
         if (!books) return;
@@ -104,6 +123,16 @@ export default function Books() {
 
     return (
         <Layout>
+            <RentModal
+                visible={rentModalVisibility}
+                setVisible={setRentModalVisibility}
+                id={bookId}
+            />
+            <BuyModal
+                visible={buyModalVisibility}
+                setVisible={setBuyModalVisibility}
+                id={bookId}
+            />
             <Container className="flex flex-col lg:flex-row mt-24 gap-8 z-[2]">
                 <div className="flex flex-col w-full flex-1 ">
                     <div
@@ -160,6 +189,8 @@ export default function Books() {
                                     rating={book.rating}
                                     price={book.price}
                                     key={book.id}
+                                    onBuy={() => buyBook(book.id)}
+                                    onRent={() => rentBook(book.id)}
                                 />
                             );
                         })}
