@@ -25,7 +25,7 @@ export const useAuthors = () => {
             },
             {
                 id: 2,
-                name: 'David Goggings',
+                name: 'David Goggins',
                 imageURL:
                     'https://nationaltoday.com/wp-content/uploads/2022/10/456840964-min-1200x834.jpg',
             },

@@ -95,10 +95,12 @@ export default function Book(props: any) {
                 setVisible={setBuyModalVisibility}
                 id={bookId}
             />
-            <Container className="py-32 flex flex-col gap-32">
+            <Container className="py-32 flex flex-col gap-16">
                 <div className="grid grid-cols-1 md:grid-cols-2 pt-8 gap-8 md:gap-24">
-                    <BookImage imageURL={book.imageURL} />
-                    <div className="flex flex-col justify-between">
+                    <div className="h-fit">
+                        <BookImage imageURL={book.imageURL} />
+                    </div>
+                    <div className="flex flex-col gap-8 justify-between">
                         <div className="flex flex-col gap-2">
                             <label className="text-4xl font-bold">
                                 {book.title}
@@ -110,7 +112,7 @@ export default function Book(props: any) {
                             <Rating value={book.rating} readOnly={true} />
                             <div className="flex flex-col gap-2 pt-8">
                                 <label>
-                                    Category: <b>{book.category}</b>
+                                    Genre: <b>{book.genre}</b>
                                 </label>
                                 <label>
                                     Author: <b>{book.author}</b>
@@ -154,7 +156,7 @@ export default function Book(props: any) {
                         </div>
                     </div>
                 </div>
-                <div className="flex flex-col gap-2">
+                <div className="flex flex-col gap-2 mt-16">
                     <label className="text-3xl transition-all md:text-4xl text-start font-extrabold block z-[5]">
                         Description
                     </label>
@@ -165,12 +167,12 @@ export default function Book(props: any) {
                     <label className="text-3xl transition-all md:text-4xl text-start font-extrabold block z-[5]">
                         You may also like
                     </label>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-8 h-fit">
                         {books.map((book) => {
                             return (
                                 <div
                                     onClick={() => navigate('/book/' + book.id)}
-                                    className=" cursor-pointer shadow-2xl"
+                                    className="cursor-pointer shadow-2xl"
                                 >
                                     <BookImage
                                         imageURL={book.imageURL}

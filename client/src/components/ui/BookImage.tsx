@@ -16,9 +16,7 @@ export default function BookImage({
 
     return (
         <div
-            className={
-                'group relative h-[100%] overflow-hidden w-full ' + className
-            }
+            className={'group relative h-full overflow-hidden w-full ' + className}
             {...props}
         >
             <img
