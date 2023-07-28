@@ -29,7 +29,6 @@ export const PopupProvider = ({ children }: { children: React.ReactNode }) => {
         }
     }, [accountDropdown]);
 
-
     return (
         <PopupContext.Provider
             value={{
@@ -39,7 +38,7 @@ export const PopupProvider = ({ children }: { children: React.ReactNode }) => {
         >
             {accountDropdown && (
                 <div
-                    className="fixed left-0 top-0 right-0 bottom-0 bg-black/10 z-[1]"
+                    className="hidden md:block fixed left-0 top-0 right-0 bottom-0 bg-black/10 z-[1]"
                     onClick={closeAll}
                 ></div>
             )}
