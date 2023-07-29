@@ -15,6 +15,8 @@ import { StringMappingType } from 'typescript';
 import { useAuth } from '../../context/AuthContext';
 import { useAuthors } from '../../hooks/useAuthors';
 import { useGenres } from '../../hooks/useGenres';
+import { useNavigate } from 'react-router-dom';
+import { FileDownload } from '@mui/icons-material';
 
 interface FilterProps {
     q: string;
@@ -32,6 +34,7 @@ export default function FiltersForm() {
 
     const { authors } = useAuthors();
     const { genres } = useGenres();
+    const navigate = useNavigate();
 
     const [filterData, setFilterData] = useState<FilterProps>({
         q: searchParams.get('q') || '',
@@ -45,11 +48,7 @@ export default function FiltersForm() {
     });
     const { theme } = useTheme();
 
-    const handleSubmit: FormEventHandler<HTMLFormElement> = (
-        e: FormEvent<any>
-    ) => {
-        e.preventDefault();
-
+    const setFilters = () => {
         var filters: any = filterData;
         var newFilters = {};
         Object.keys(filterData).forEach((key: string) => {
@@ -58,7 +57,15 @@ export default function FiltersForm() {
             }
         });
 
-        setSearchParams(newFilters);
+        setSearchParams({ ...newFilters });
+    };
+
+    const handleSubmit: FormEventHandler<HTMLFormElement> = (
+        e: FormEvent<any>
+    ) => {
+        e.preventDefault();
+
+        setFilters();
     };
 
     const handleChange: ChangeEventHandler<
@@ -276,7 +283,24 @@ export default function FiltersForm() {
                 defaultValue={filterData.maxPages || ''}
                 onChange={handleChange}
             />
-            <Button className="col-span-2" rounded={false} variant="secondary">
+            <Button
+                className="col-span-2"
+                rounded={false}
+                variant="secondary"
+                type="button"
+                onClick={() => {
+                    window.location.href =
+                        window.location.origin +
+                        ('/books' +
+                            (searchParams.get('q')
+                                ? '?q=' + searchParams.get('q')
+                                : ''));
+                    console.log(filterData);
+                }}
+            >
+                Reset Filters
+            </Button>
+            <Button className="col-span-2" rounded={false} variant="primary">
                 Apply Filters
             </Button>
         </form>
