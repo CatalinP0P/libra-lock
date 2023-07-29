@@ -6,10 +6,12 @@ import SearchBar from './SearchBar';
 
 import { ClearRounded } from '@mui/icons-material';
 import { ReactComponent as PersonSVG } from '../../assets/svgs/PersonFill.svg';
+import { ReactComponent as CoinSVG } from '../../assets/svgs/Coin.svg';
 
 import { useTheme } from '../../context/ThemeContext';
 import { useAuth } from '../../context/AuthContext';
 import { useActionData, useNavigate } from 'react-router-dom';
+import ThemeSlider from '../ui/ThemeSlider';
 
 export default function MobileNav() {
     const [visible, setVisible] = useState<boolean>(false);
@@ -19,6 +21,12 @@ export default function MobileNav() {
 
     return (
         <div className={'lg:hidden'}>
+            {visible && (
+                <div
+                    className="inset-0 fixed"
+                    onClick={() => setVisible(false)}
+                />
+            )}
             {!visible ? (
                 <div onClick={() => setVisible(true)}>
                     <MenuRoundedIcon />
@@ -44,8 +52,33 @@ export default function MobileNav() {
                     <SearchBar />
                 </div>
                 <div className="h-[1px] w-full bg-neutral-400" />
+
+                <label
+                    className={
+                        'flex flex-row justify-between w-full items-center cursor-pointer [&>*]:pointer-events-none py-4 px-8 transition-all ' +
+                        (theme == 'dark'
+                            ? ' hover:bg-darkMode'
+                            : 'hover:bg-neutral-100')
+                    }
+                >
+                    Browse Books
+                </label>
+
+                <label
+                    className={
+                        'flex flex-row justify-between w-full items-center py-4 px-8 transition-all ' +
+                        (theme == 'dark'
+                            ? ' hover:bg-darkMode'
+                            : 'hover:bg-neutral-100')
+                    }
+                >
+                    Color Theme
+                    <ThemeSlider size={'small'} />
+                </label>
+
                 {user ? (
                     <>
+                        <div className="h-[1px] w-full bg-neutral-400" />
                         <div
                             className={
                                 'flex flex-row justify-between w-full items-center [&>*]:pointer-events-none py-4 px-8 transition-all'
@@ -72,6 +105,29 @@ export default function MobileNav() {
                                 />
                             )}
                         </div>
+                        <label
+                            onClick={() => navigate('/buycoins')}
+                            className={
+                                'flex flex-row justify-between w-full items-center cursor-pointer [&>*]:pointer-events-none py-4 px-8 transition-all ' +
+                                (theme == 'dark'
+                                    ? ' hover:bg-darkMode'
+                                    : 'hover:bg-neutral-100')
+                            }
+                        >
+                            Buy Credits
+                            <label className="flex flex-row items-center text-xl gap-3 cursor-pointer">
+                                540
+                                <CoinSVG
+                                    height={24}
+                                    width={24}
+                                    fill={
+                                        theme == 'dark'
+                                            ? colors.white
+                                            : colors.primary
+                                    }
+                                />
+                            </label>
+                        </label>
                         <div
                             className={
                                 'flex flex-row justify-between w-full items-center cursor-pointer [&>*]:pointer-events-none py-4 px-8 transition-all ' +
