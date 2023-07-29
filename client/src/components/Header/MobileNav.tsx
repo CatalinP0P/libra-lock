@@ -60,6 +60,7 @@ export default function MobileNav() {
                             ? ' hover:bg-darkMode'
                             : 'hover:bg-neutral-100')
                     }
+                    onClick={() => navigate('/books')}
                 >
                     Browse Books
                 </label>
