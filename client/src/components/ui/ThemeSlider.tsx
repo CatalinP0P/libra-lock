@@ -5,16 +5,20 @@ import { ReactComponent as SunWhite } from '../../assets/svgs/SunWhite.svg';
 import Slider from './Slider';
 import { useTheme } from '../../context/ThemeContext';
 
-export default function ThemeSlider() {
+export default function ThemeSlider({
+    size = 'medium',
+}: {
+    size?: 'small' | 'medium' | 'large';
+}) {
     const { theme, toggleTheme } = useTheme();
-    
+
     return (
         <Slider
             checked={theme == 'dark' ? true : false}
             onChange={() => {
                 toggleTheme();
             }}
-            size='large'
+            size={size}
             SvgOFF={SunWhite}
             SvgON={MoonSecondary}
         />
