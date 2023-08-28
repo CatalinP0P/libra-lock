@@ -3,9 +3,9 @@ import { useBooks } from '../../hooks/useBooks';
 import Modal from './Modal';
 import BookImage from './BookImage';
 import Button from './Button';
-import FormSelectFluid from './forms/FormSelectFluid';
 import FormSelect from './forms/FormSelect';
 import { ReactComponent as LoadingSVG } from '../../assets/svgs/loading.svg';
+import { useTheme } from '../../context/ThemeContext';
 
 interface ModalProps {
     id: string;
@@ -18,9 +18,10 @@ export default function RentModal({ id, visible, setVisible }: ModalProps) {
     const [selectedBook, setSelectedBook] = useState<any>();
     const [modalStep, setModalStep] = useState(1);
     const [loading, setLoading] = useState(false);
+    const { theme } = useTheme();
 
     useEffect(() => {
-        const book = books.filter((m) => m.id == id)[0];
+        const book = books.filter((m) => m.id === id)[0];
         setSelectedBook(book);
     }, [id]);
 
@@ -36,9 +37,13 @@ export default function RentModal({ id, visible, setVisible }: ModalProps) {
             setVisible={setVisible}
             className="w-[90%] max-w-[40rem]"
         >
-            {modalStep == 1 && (
-                <div className="flex flex-col gap-2 pt-8 items-center h-full justify-between">
-                    <label className="text-4xl font-semibold text-neutral-800 mx-auto pb-4">
+            {modalStep === 1 && (
+                <div
+                    className={
+                        'flex flex-col gap-2 pt-8 items-center h-full justify-between'
+                    }
+                >
+                    <label className="text-4xl font-semibold mx-auto pb-4">
                         Rent this book {selectedBook?.price / 5}
                     </label>
                     <div className="flex flex-col gap-1">
@@ -46,12 +51,12 @@ export default function RentModal({ id, visible, setVisible }: ModalProps) {
                             imageURL={selectedBook?.imageURL}
                             className="w-[90%] mx-auto max-w-[32rem]"
                         />
-                        <label className="text-2xl text-neutral-800 font-semibold">
+                        <label className="text-2xl  font-semibold">
                             {selectedBook?.title}
                         </label>
-                        <label className="text-neutral-600">
+                        <label className="text-neutral-400">
                             by{' '}
-                            <span className="text-neutral-800 font-semibold">
+                            <span className=" font-semibold">
                                 {selectedBook?.author}
                             </span>
                         </label>
@@ -80,7 +85,7 @@ export default function RentModal({ id, visible, setVisible }: ModalProps) {
             {modalStep == 2 && (
                 <div className="flex flex-col gap-2 pt-8 text-start relative items-center justify-between">
                     <div className="flex flex-col gap-4">
-                        <label className="text-4xl font-semibold text-neutral-800 pb-4">
+                        <label className="text-4xl font-semibold pb-4">
                             Checkout
                         </label>
                         <div className="flex flex-col gap-1 items-start pt-8 w-[90%]">
@@ -136,11 +141,11 @@ export default function RentModal({ id, visible, setVisible }: ModalProps) {
             {modalStep == 3 && (
                 <div className="flex flex-col gap-2 pt-8 text-center items-center h-full justify-between">
                     <div className="flex flex-col gap-4 w-full">
-                        <label className="text-2xl md:text-4xl mx-auto font-semibold text-neutral-800 pb-4">
+                        <label className="text-2xl md:text-4xl mx-auto font-semibold pb-4">
                             Book rented successfully
                         </label>
                         <label className="flex flex-col items-center justify-center text-4xl">
-                            <label className="text-sm font-semibold text-neutral-400">
+                            <label className="text-sm font-semibold">
                                 Here is your book code
                             </label>
                             13573

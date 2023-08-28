@@ -26,6 +26,14 @@ function App() {
                             <Route path="/buycoins" element={<BuyCoins />} />
                             <Route path="/books" element={<Books />} />
                             <Route path="/book/:id" element={<Book />} />
+                            <Route
+                                path="/contact"
+                                element={<label>Contact</label>}
+                            />
+                            <Route
+                                path="/why-us"
+                                element={<label>Why us</label>}
+                            />
                             <Route path="/*" element={<NotFound />} />
                         </Routes>
                     </BrowserRouter>

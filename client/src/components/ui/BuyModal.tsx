@@ -38,7 +38,7 @@ export default function BuyModal({ id, visible, setVisible }: ModalProps) {
         >
             {modalStep == 1 && (
                 <div className="flex flex-col gap-2 pt-8 items-center h-full justify-between">
-                    <label className="text-4xl font-semibold text-neutral-800 mx-auto pb-4">
+                    <label className="text-4xl font-semibold mx-auto pb-4">
                         Buy this book {selectedBook?.price}
                     </label>
                     <div className="flex flex-col gap-1">
@@ -46,12 +46,12 @@ export default function BuyModal({ id, visible, setVisible }: ModalProps) {
                             imageURL={selectedBook?.imageURL}
                             className="w-[90%] mx-auto max-w-[32rem]"
                         />
-                        <label className="text-2xl text-neutral-800 font-semibold">
+                        <label className="text-2xl font-semibold">
                             {selectedBook?.title}
                         </label>
-                        <label className="text-neutral-600">
+                        <label className="text-neutral-400">
                             by{' '}
-                            <span className="text-neutral-800 font-semibold">
+                            <span className=" font-semibold">
                                 {selectedBook?.author}
                             </span>
                         </label>
@@ -80,7 +80,7 @@ export default function BuyModal({ id, visible, setVisible }: ModalProps) {
             {modalStep == 2 && (
                 <div className="flex flex-col gap-2 pt-8 text-start relative items-center justify-between">
                     <div className="flex flex-col gap-4">
-                        <label className="text-4xl font-semibold text-neutral-800 pb-4">
+                        <label className="text-4xl font-semibold pb-4">
                             Checkout
                         </label>
                         <div className="flex flex-col gap-1 items-start pt-8 w-[90%]">
@@ -119,7 +119,7 @@ export default function BuyModal({ id, visible, setVisible }: ModalProps) {
                     </div>
                     {loading && (
                         <div className="absolute left-0 top-0 bottom-0 right-0 flex flex-col items-center justify-center bg-black/75 z-[110]">
-                            <label className="z-[114] text-3xl font-medium text-white flex flex-row gap-4 items-center">
+                            <label className="z-[114] text-3xl font-medium flex flex-row gap-4 items-center">
                                 <LoadingSVG
                                     width={32}
                                     height={32}
@@ -136,11 +136,11 @@ export default function BuyModal({ id, visible, setVisible }: ModalProps) {
             {modalStep == 3 && (
                 <div className="flex flex-col gap-2 pt-8 text-center items-center h-full justify-between">
                     <div className="flex flex-col gap-4 w-full">
-                        <label className="text-2xl md:text-4xl mx-auto font-semibold text-neutral-800 pb-4">
+                        <label className="text-2xl md:text-4xl mx-auto font-semibold pb-4">
                             Book buyed successfully
                         </label>
                         <label className="flex flex-col items-center justify-center text-4xl">
-                            <label className="text-sm font-semibold text-neutral-400">
+                            <label className="text-sm font-semibold">
                                 Here is your book code
                             </label>
                             13573

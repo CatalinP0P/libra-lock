@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Layout from '../../Layout';
-import Slider from '../../components/ui/Slider';
 import Container from '../../components/ui/Container';
 import Button from '../../components/ui/Button';
 import BookCard from '../../components/ui/BookCard';
-import circleBackground from '../../assets/backgrounds/Version2 DC.png';
 
 import { useNavigate } from 'react-router-dom';
 import { useBooks } from '../../hooks/useBooks';
