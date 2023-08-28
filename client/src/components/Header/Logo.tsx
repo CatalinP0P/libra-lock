@@ -10,13 +10,14 @@ export default function Logo({ className }: { className?: string }) {
     return (
         <div
             onClick={() => (window.location.href = window.location.origin)}
-            className="cursor-pointer z-[10]"
+            className="cursor-pointer flex-grow z-[10]"
         >
             <img
-                src={theme == 'dark' ? logoDark : logoWhite}
+                src={theme === 'dark' ? logoDark : logoWhite}
+                alt="logo"
                 loading="eager"
                 className={
-                    'h-[40px] transition-all  cursor-pointer md:h-[64px] ' +
+                    'min-w-[7rem] w-[7rem] transition-all  cursor-pointer' +
                     className
                 }
             />

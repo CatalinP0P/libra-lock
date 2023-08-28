@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { ClearRounded } from '@mui/icons-material';
+import { useTheme } from '../../context/ThemeContext';
 
 interface ModalProps {
     children: React.ReactNode;
@@ -14,16 +15,22 @@ export default function Modal({
     visible,
     setVisible,
 }: ModalProps) {
+    const { theme } = useTheme();
+
     return (
         <>
             <div
                 className={
-                    'fixed z-[100] left-[50%] top-[50%] bg-white translate-x-[-50%] overflow-x-hidden max-h-[75vh] overflow-y-auto transition-all text-neutral-800 ' +
+                    'fixed z-[100] left-[50%] top-[50%] translate-x-[-50%] overflow-x-hidden max-h-[75vh] overflow-y-auto transition-all  ' +
                     (visible
                         ? ' opacity-100 translate-y-[-50%]'
                         : ' opacity-0 translate-y-[-100%] pointer-events-none') +
                     ' ' +
-                    className
+                    className +
+                    ' ' +
+                    (theme === 'dark'
+                        ? 'bg-darkMode text-white'
+                        : 'bg-white text-neutral-800')
                 }
             >
                 <div
