@@ -12,6 +12,7 @@ import { AuthProvider } from './context/AuthContext';
 import { PopupProvider } from './context/PopupContext';
 import BuyCoins from './pages/BuyCoins/BuyCoins';
 import Books from './pages/Books/Books';
+import Contact from './pages/Contact/Contact';
 
 function App() {
     return (
@@ -26,10 +27,7 @@ function App() {
                             <Route path="/buycoins" element={<BuyCoins />} />
                             <Route path="/books" element={<Books />} />
                             <Route path="/book/:id" element={<Book />} />
-                            <Route
-                                path="/contact"
-                                element={<label>Contact</label>}
-                            />
+                            <Route path="/contact" element={<Contact />} />
                             <Route
                                 path="/why-us"
                                 element={<label>Why us</label>}
